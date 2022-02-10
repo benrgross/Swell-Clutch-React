@@ -30,7 +30,7 @@ router.get("/getspots/:spot", async (req, res) => {
 
     res.status(200).json(results);
   } catch (error) {
-    res.json({ error: "server error" });
+    res.json(error);
     console.log(error);
   }
 });
