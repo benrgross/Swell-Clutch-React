@@ -9,7 +9,7 @@ router.get("/getspots/:spot", async (req, res) => {
     const results = [];
 
     const { data } = await axios.get(
-      `https://www.surfline.com/search/${req.params.spot}`
+      `www.surfline.com/search/${req.params.spot}`
     );
 
     const $ = cheerio.load(data);
@@ -29,8 +29,8 @@ router.get("/getspots/:spot", async (req, res) => {
     });
 
     res.status(200).json(results);
-  } catch (error) {
-    res.json(error);
+  } catch (e) {
+    res.json(e.response.data);
     console.log(error);
   }
 });
