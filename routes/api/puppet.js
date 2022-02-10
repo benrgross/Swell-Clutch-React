@@ -8,13 +8,13 @@ router.get("/getspots/:spot", async (req, res) => {
     const page = await browser.newPage();
     await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
 
-    const text = await page.evaluate(() => {
-      return document.querySelector(".SearchResults_result__5syZp").innerText;
-    });
+    // const text = await page.evaluate(() => {
+    //   return document.querySelector(".SearchResults_result__5syZp").innerText;
+    // });
 
     await browser.close();
 
-    res.json(text);
+    res.json(page);
   } catch (err) {
     res.send(err);
   }
