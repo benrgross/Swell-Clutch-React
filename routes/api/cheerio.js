@@ -8,6 +8,10 @@ router.get("/getspots/:spot", async (req, res) => {
   try {
     const results = [];
 
+    const { data } = await axios.get(
+      `https://www.surfline.com/search/${req.params.spot}`
+    );
+
     const $ = await cheerio.load(data);
 
     $("#surf-spots > div > div").each((i, element) => {
@@ -30,3 +34,5 @@ router.get("/getspots/:spot", async (req, res) => {
     console.log(error);
   }
 });
+
+module.exports = router;

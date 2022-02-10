@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const cheerioRoutes = require("./guest");
+const cheerioRoutes = require("./cheerio");
 
 router.use("/cheerio", cheerioRoutes);
 
