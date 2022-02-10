@@ -12,7 +12,7 @@ router.get("/getspots/:spot", async (req, res) => {
       `https://www.surfline.com/search/${req.params.spot}`
     );
 
-    const $ = await cheerio.load(data);
+    const $ = cheerio.load(data);
 
     $("#surf-spots > div > div").each((i, element) => {
       let href = $(element).children("a").attr("href");
