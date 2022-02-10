@@ -29,9 +29,9 @@ router.get("/getspots/:spot", async (req, res) => {
     });
 
     res.status(200).json(results);
-  } catch (e) {
-    res.json(e.response.data);
-    console.log(error);
+  } catch (err) {
+    res.json(err);
+    console.log(err);
   }
 });
 

@@ -28,6 +28,7 @@
     "express": "^4.16.3",
     "if-env": "^1.0.4",
     "pupeteer": "0.0.1",
+    "puppeteer": "^13.3.1",
     "react-bootstrap": "^2.0.3",
     "react-router-dom": "^5.2.0"
   }
