@@ -9,7 +9,6 @@ export default function Home() {
 
   const searchSpot = async (e) => {
     e.preventDefault();
-    console.log(spotName.current.value);
 
     try {
       const { data } = await axios.get(
