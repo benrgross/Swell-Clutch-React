@@ -6,7 +6,7 @@ router.get("/getspots/:spot", async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      args: ["--no-sandbox"],
       headless: true,
     });
     const page = await browser.newPage();
