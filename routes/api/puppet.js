@@ -7,14 +7,6 @@ require("dotenv").config;
 router.get("/getspots/:spot", async (req, res) => {
   console.log(req.params);
   try {
-    const spot = req?.params?.spot;
-    if (!spot) {
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "application/json");
-      res.end(JSON.stringify({ id: null }));
-      return;
-    }
-
     let results = [];
     const browser = await puppeteer.launch(
       process.env.NODE_ENV === "production"
@@ -48,9 +40,8 @@ router.get("/getspots/:spot", async (req, res) => {
     });
     await browser.close();
 
-    res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify(html));
+    res.json(html);
 
     // const text = await page.evaluate(() => {
     //   // const name = Array.from(
