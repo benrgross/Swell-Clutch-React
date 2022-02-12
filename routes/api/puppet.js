@@ -9,7 +9,9 @@ router.get("/getspots/:spot", async (req, res) => {
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
-    await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
+    await page.goto(`https://www.surfline.com/search/${req.params.spot}`, {
+      waitUntil: "networkidle0",
+    });
 
     const text = await page.evaluate(() => {
       const name = Array.from(
