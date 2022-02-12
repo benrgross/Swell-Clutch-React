@@ -9,19 +9,20 @@ router.get("/getspots/:spot", async (req, res) => {
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
-    await page.goto(`https://www.surfline.com/search/${req.params.spot}`, {
-      waitUntil: "networkidle0",
-    });
+    await page.goto(
+      `https://www.surfline.com/search/${req.params.spot}`
+      // waitUntil: "networkidle0",
+    );
 
     const text = await page.evaluate(() => {
-      const name = Array.from(
-        document
-          .querySelector("#surf-spots")
-          .querySelectorAll(".SearchResults_result__5syZp"),
-        (element) => element.textContent
-      );
+      // const name = Array.from(
+      //   document
+      //     .querySelector("#surf-spots")
+      //     .querySelectorAll(".SearchResults_result__5syZp"),
+      //   (element) => element.textContent
+      // );
 
-      return name;
+      return document.querySelector(".Search_headline__rMElG").innerText;
     });
     console.log("results", text);
 
