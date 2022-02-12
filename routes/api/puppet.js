@@ -1,25 +1,15 @@
 const puppeteer = require("puppeteer");
 const router = require("express").Router();
 const cheerio = require("cheerio");
-const chrome = require("chrome-aws-lambda");
-require("dotenv").config;
 
 router.get("/getspots/:spot", async (req, res) => {
   console.log(req.params);
+
   try {
     let results = [];
-    const browser = await puppeteer.launch(
-      process.env.NODE_ENV === "production"
-        ? {
-            args: chrome.args,
-            executablePath: await chrome.executablePath,
-            headless: chrome.headless,
-          }
-        : {}
-    );
-
+    const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
-    await page.goto(`https://www.surfline.com/search/${spot}`);
+    await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
 
     const html = await page.content(); // serialized HTML of page DOM.
 
@@ -39,9 +29,7 @@ router.get("/getspots/:spot", async (req, res) => {
       results.push(spot);
     });
     await browser.close();
-
-    res.setHeader("Content-Type", "application/json");
-    res.json(html);
+    res.status(200).json(html);
 
     // const text = await page.evaluate(() => {
     //   // const name = Array.from(
