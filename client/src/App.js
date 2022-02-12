@@ -12,7 +12,7 @@ export default function Home() {
 
     try {
       const { data } = await axios.get(
-        `api/cheerio/getspots/${spotName.current.value}`
+        `api/puppet/getspots/${spotName.current.value}`
       );
       console.log(data);
       if (data.length < 1) {

@@ -6,8 +6,7 @@ router.get("/getspots/:spot", async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
-      args: ["--no-sandbox"],
-      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
     await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
