@@ -32,7 +32,7 @@ router.get("/getspots/:spot", async (req, res) => {
       results.push(spot);
     });
     await browser.close();
-    res.status(200).json(results);
+    res.status(200).json(html);
 
     // const text = await page.evaluate(() => {
     //   // const name = Array.from(
