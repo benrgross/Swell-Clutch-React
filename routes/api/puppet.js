@@ -39,10 +39,10 @@ router.get("/getspots/:spot", async (req, res) => {
         spotId: spotId,
         href: href,
       };
-      results.push(spot);
+      results.push(results);
     });
     await browser.close();
-    res.status(200).json(spot);
+    res.status(200).json(results);
 
     // const text = await page.evaluate(() => {
     //   // const name = Array.from(
