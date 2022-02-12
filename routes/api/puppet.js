@@ -14,7 +14,7 @@ router.get("/getspots/:spot", async (req, res) => {
     const page = await browser.newPage();
     await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
 
-    const html = await page.content(); // serialized HTML of page DOM.
+    const html = await page.content({ encoding: "base64" }); // serialized HTML of page DOM.
 
     const $ = cheerio.load(html);
 
