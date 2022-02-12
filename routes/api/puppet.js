@@ -1,6 +1,8 @@
 const puppeteer = require("puppeteer");
 const router = require("express").Router();
 const cheerio = require("cheerio");
+const chrome = require("chrome-aws-lambda");
+require("dotenv").config;
 
 router.get("/getspots/:spot", async (req, res) => {
   console.log(req.params);
@@ -8,11 +10,16 @@ router.get("/getspots/:spot", async (req, res) => {
   try {
     let results = [];
     const browser = await puppeteer.launch(
-      {
-        args: ["--no-sandbox", "--disable-setuid-sandbox"],
-      },
-      { headless: true }
+      process.env.NODE_ENV === "production"
+        ? {
+            args: chrome.args,
+            executablePath: await chrome.executablePath,
+            headless: chrome.headless,
+            args: ["--no-sandbox", "--disable-setuid-sandbox"],
+          }
+        : {}
     );
+
     const page = await browser.newPage();
     await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
 
