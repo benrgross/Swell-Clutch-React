@@ -26,36 +26,38 @@ router.get("/getspots/:spot", async (req, res) => {
     );
     await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
 
-    // await page.content(); // serialized HTML of page DOM.
-    const text = await page.evaluate(() => {
-      // const name = Array.from(
-      //   document
-      //     .querySelector("#surf-spots")
-      //     .querySelectorAll(".SearchResults_result__5syZp"),
-      //   (element) => element.textContent
-      // );
+    const html = await page.content(); // serialized HTML of page DOM.
+    // const text = await page.evaluate(() => {
+    //   // const name = Array.from(
+    //   //   document
+    //   //     .querySelector("#surf-spots")
+    //   //     .querySelectorAll(".SearchResults_result__5syZp"),
+    //   //   (element) => element.textContent
+    //   // );
 
-      return document.querySelector(".Search_headline__rMElG").innerText;
+    //   return document.querySelector(".Search_headline__rMElG").innerText;
+    // });
+
+    const $ = cheerio.load(html);
+
+    $("#surf-spots > div > div").each((i, element) => {
+      let href = $(element).children("a").attr("href");
+      let spotId = href.split("/")[5];
+      let nameFromRef = href.split("/");
+      let name = nameFromRef[4].split("-").join(" ");
+
+      const spot = {
+        name: name,
+        spotId: spotId,
+        href: href,
+      };
+      console.log(spot);
+      results.push(spot);
     });
 
-    // const $ = cheerio.load(html);
-
-    // $("#surf-spots > div > div").each((i, element) => {
-    //   let href = $(element).children("a").attr("href");
-    //   let spotId = href.split("/")[5];
-    //   let nameFromRef = href.split("/");
-    //   let name = nameFromRef[4].split("-").join(" ");
-
-    //   const spot = {
-    //     name: name,
-    //     spotId: spotId,
-    //     href: href,
-    //   };
-    //   console.log(spot);
-    //   results.push(spot);
-    // });
     await browser.close();
-    res.status(200).json(text);
+
+    res.status(200).json(results);
   } catch (err) {
     res.send(err);
   }
