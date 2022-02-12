@@ -6,8 +6,15 @@ require("dotenv").config;
 
 router.get("/getspots/:spot", async (req, res) => {
   console.log(req.params);
-
   try {
+    const spot = req?.params?.spot;
+    if (!spot) {
+      res.statusCode = 200;
+      res.setHeader("Content-Type", "application/json");
+      res.end(JSON.stringify({ id: null }));
+      return;
+    }
+
     let results = [];
     const browser = await puppeteer.launch(
       process.env.NODE_ENV === "production"
@@ -15,13 +22,12 @@ router.get("/getspots/:spot", async (req, res) => {
             args: chrome.args,
             executablePath: await chrome.executablePath,
             headless: chrome.headless,
-            args: ["--no-sandbox", "--disable-setuid-sandbox"],
           }
         : {}
     );
 
     const page = await browser.newPage();
-    await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
+    await page.goto(`https://www.surfline.com/search/${spot}`);
 
     const html = await page.content(); // serialized HTML of page DOM.
 
@@ -41,7 +47,10 @@ router.get("/getspots/:spot", async (req, res) => {
       results.push(spot);
     });
     await browser.close();
-    res.status(200).json(html);
+
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify(html));
 
     // const text = await page.evaluate(() => {
     //   // const name = Array.from(
