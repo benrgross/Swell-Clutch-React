@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const cheerioRoutes = require("./cheerio");
 const puppetRoutes = require("./puppet");
-const surflineRoutes = require("./surfline");
+const surflineRoutes = require("./surf");
 
 router.use("/cheerio", cheerioRoutes);
 router.use("/puppet", puppetRoutes);
-router.use("/surfline", surflineRoutes);
+router.use("/surf", surflineRoutes);
 
 module.exports = router;
