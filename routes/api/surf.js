@@ -2,8 +2,6 @@ const router = require("express").Router();
 const axios = require("axios");
 
 router.post("/report", async (req, res) => {
-  console.log("hello");
-  console.log(req.body);
   try {
     const { data } = await axios.get(
       `http://services.surfline.com/kbyg/spots/forecasts/wave?spotId=${req.body.spotId}`
