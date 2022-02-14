@@ -1,9 +1,10 @@
 const puppeteer = require("puppeteer");
 const router = require("express").Router();
 const cheerio = require("cheerio");
+const axios = require("axios");
 
 router.get("/getspots/:spot", async (req, res) => {
-  console.log(req.params);
+  console.log(req.body);
 
   try {
     let results = [];
@@ -11,10 +12,6 @@ router.get("/getspots/:spot", async (req, res) => {
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
-        // "--disable-infobars",
-        // "--window-position=0,0",
-        // "--ignore-certifcate-errors",
-        // "--ignore-certifcate-errors-spki-list",
         '--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36"',
       ],
       waitUntil: "domcontentloaded",
@@ -63,6 +60,55 @@ router.get("/getspots/:spot", async (req, res) => {
     res.send(err);
   }
 });
+
+router.post("/report", async (req, res) => {
+  console.log(req.body);
+  try {
+    const browser = await puppeteer.launch({
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        '--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36"',
+      ],
+      waitUntil: "domcontentloaded",
+      // waitUntil: "networkidle0",
+      // timeout: 0,
+    });
+    const page = await browser.newPage();
+    await page.setUserAgent(
+      "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+    );
+    await page.goto(req.body.url);
+
+    const html = await page.content();
+    const $ = cheerio.load(html);
+
+    const text = page.evaluate(function () {
+      const swell = document.querySelector(".quiver-surf-height").textContent;
+      return swell;
+    });
+
+    res.send(html);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get(`/mapreport`, async (req, res) => {
+  console.log(req.method);
+
+  try {
+    const { data } = await axios.get(
+      `http://services.surfline.com/kbyg/mapview/spot?lat=33.86003711966244&lon=-118.40446791677738`
+    );
+    console.log(data);
+    res.json(data);
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+});
+
 module.exports = router;
 
 // #surf-spots

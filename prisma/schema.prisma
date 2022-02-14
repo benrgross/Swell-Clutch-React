@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id            Int       @default(autoincrement()) @id
+  name          String?
+  email         String?   @unique
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  location     Location[]
+  session      Session[]
+  @@map(name: "users")
+}
+
+model Location {
+  id            Int       @default(autoincrement()) @id
+  spot_id       String      @unique
+  name          String?    @unique
+  lat           Float
+  lon           Float
+  timezone      String?
+  thumbnail     String?
+  type          String?
+  subregionId   String?
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  user          User[]
+  session       Session[]
+}
+
+model Session {
+  id            Int       @default(autoincrement()) @id
+  createdAt     DateTime  @default(now())
+  timeStamp     Int  
+  timeZone      String     
+  utcOffset     Int      
+  surfMin       Float
+  surfMax       Float
+  waterTemp     String?
+  wind          Json?
+  tide          Json?
+  report        Json?
+  conditions    Json?
+  swells        Json?
+  userEmail     String?
+  user          User?     @relation(fields: [userEmail], references: [email])
+  spotId        String?
+  spot          Location?     @relation(fields: [spotId], references: [spot_id])
+  
+}
+
+
