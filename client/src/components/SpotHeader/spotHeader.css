@@ -1,0 +1,12 @@
+.current-swell__head-cont {
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 55% !important;
+  background-size: 100% 100%;
+  font-weight: bolder;
+  color: rgb(240, 239, 239) !important;
+  text-shadow: black 0px 0px 2px !important;
+}

@@ -1,8 +1,9 @@
 import { Row, Col, Container } from "react-bootstrap";
-import TideDirection from "./TideDirection";
-import RotateArrow from "./RotateArrow";
-import ConvertTimeStamp from "./ConvertTimeStamp";
-import BuoySwells from "./BuoySwells";
+import TideDirection from "../TideDirection";
+import RotateArrow from "../RotateArrow";
+import ConvertTimeStamp from "../ConvertTimeStamp";
+import BuoySwells from "../BuoySwells";
+import "./currentSwell.css";
 
 export default function CurrentSwellCont({ spot }) {
   return (
@@ -33,9 +34,10 @@ export default function CurrentSwellCont({ spot }) {
                 </Row>
                 <Row>
                   <div className="current-swell__waveHeight">
-                    {spot.waveHeight.min} - {spot.waveHeight.max}ft{" "}
+                    {spot.waveHeight.min.toFixed(1)} -{" "}
+                    {spot.waveHeight.max.toFixed(1)}ft{" "}
                     {spot.waveHeight.occasional > 0
-                      ? `w/ occ ${spot.waveHeight.occasional}ft`
+                      ? `w/ occ ${spot.waveHeight.occasional.toFixed(1)}ft`
                       : ""}
                   </div>
                 </Row>

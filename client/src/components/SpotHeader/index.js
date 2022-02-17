@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
+import "./spotHeader.css";
 
 function SpotHeader({ spot }) {
   return (

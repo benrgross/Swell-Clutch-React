@@ -1,83 +1,3 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Libre Baskerville", serif;
-  font-family: "Rubik", sans-serif;
-  background-color: #ebf4f94a;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.brand__cont {
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  padding: 3rem;
-}
-.brand__header {
-  color: #0070f3;
-}
-
-.signUp__cont {
-  padding: 10px;
-}
-
-.signUp__h2 {
-  margin-bottom: 4rem;
-}
-
-.signUp__get-started {
-  padding: 1rem;
-  display: flex;
-  margin: auto;
-}
-
-.search__cont {
-  background-color: white;
-  margin-top: 2rem;
-  border: 0.5px solid #d3e4f9ad;
-  border-radius: 1%;
-  padding: 3%;
-}
-
-.search__spot-label {
-  margin-bottom: 0.5rem;
-}
-
-.search__spot-btn {
-  margin-top: 1rem !important;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  background-color: #0070f3;
-}
-
-.spot__results-col {
-  margin-top: 2rem;
-  padding: 1rem;
-}
-
-.spot__results-cont {
-  margin-bottom: 10rem;
-}
-.spot__result-link {
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-
-.spot__result-link:hover {
-  color: #0070f3;
-}
-
 .current-swell__report {
 }
 
@@ -184,17 +104,17 @@ a {
 }
 
 @media only screen and (max-width: 600px) {
-  .current-swell__report-cont {
-    padding: 1px;
-  }
-  .current-swell__waveHeight-col {
-    padding: 1rem;
-  }
-  .current-swell__waveHeight {
-    font-size: 1.5rem;
-  }
   .current-swell__waveHeight-col {
     padding: 0.5rem 1rem 1rem 1rem;
-    width: 50%;
+    width: 50% !important;
+  }
+  .current-swell__report-cont {
+    padding: 1px !important;
+  }
+  .current-swell__waveHeight-col {
+    padding: 1rem !important;
+  }
+  .current-swell__waveHeight {
+    font-size: 1.5rem !important;
   }
 }
