@@ -14,13 +14,13 @@ function SearchSpotResults({ data }) {
     setLoading(true);
     setError(false);
     try {
-      const { data } = await axios.get(
+      const data = await axios.get(
         `/api/surf/report/${e.target.getAttribute("data-spotid")}`
       );
 
       console.log(data);
 
-      setSwell(data);
+      setSwell(data.data);
 
       setLoading(false);
     } catch (err) {
