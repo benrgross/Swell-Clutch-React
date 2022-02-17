@@ -1,6 +1,6 @@
 import React from "react";
 import SearchSpot from "../components/SearchSpot";
-import SearchSpots from "../components/SearchSpot";
+import "../style.css";
 
 function Search() {
   return (
