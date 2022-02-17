@@ -10,7 +10,10 @@ export default function CurrentSwellCont({ spot }) {
     <Row className="current-swell__cont">
       <Col></Col>
       <Col md={6} sm={12} className="current-swell__report">
-        <Container className="current-swell__report-cont rounded shadow-sm">
+        <Container
+          fluid
+          className="current-swell__report-cont rounded shadow-sm"
+        >
           <Row>
             <div className="d-flex justify-content-center current-swell__report-header-cont">
               <h4 className="current-swell__report-header">Surf Report</h4>

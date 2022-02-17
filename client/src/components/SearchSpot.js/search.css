@@ -1,0 +1,19 @@
+.search__cont {
+  background-color: white;
+  margin-top: 2rem;
+  border: 0.5px solid #d3e4f9ad;
+  border-radius: 1%;
+  padding: 3%;
+}
+
+.search__spot-label {
+  margin-bottom: 0.5rem;
+}
+
+.search__spot-btn {
+  margin-top: 1rem !important;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  background-color: #0070f3;
+}

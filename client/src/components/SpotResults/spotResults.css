@@ -1,0 +1,22 @@
+.spot__results-col {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.spot__results-cont {
+  margin-bottom: 10rem;
+}
+p.spot__result-link {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border: 1px solid grey;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f1faffe3;
+}
+
+.spot__result-link:hover {
+  color: #0070f3;
+  background-color: #4999f427;
+}

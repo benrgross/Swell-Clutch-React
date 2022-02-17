@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import axios from "axios";
-import CurrentSwell from "./CurrentSwell";
+import CurrentSwell from "../CurrentSwell";
+import "./spotResults.css";
 
 function SearchSpotResults({ data }) {
   const [swell, setSwell] = useState([]);
@@ -40,7 +41,7 @@ function SearchSpotResults({ data }) {
                 return (
                   <p
                     onClick={getSwell}
-                    className="spot__result-link"
+                    className="spot__result-link shadow-sm rounded"
                     key={i}
                     data-spotid={spot.spotId}
                     data-api={spot.href}

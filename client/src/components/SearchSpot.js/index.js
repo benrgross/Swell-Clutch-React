@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
-import Results from "./Results";
-import SearchSpotResults from "./SpotResults";
+import Results from "../Results";
+import "./search.css";
 
 function SearchSpot() {
   const spotName = useRef();
@@ -16,6 +16,7 @@ function SearchSpot() {
     console.log(spotName.current.value);
     setLoading(true);
     setError(false);
+    setSearch(false);
 
     try {
       const { data } = await axios.get(
@@ -23,6 +24,7 @@ function SearchSpot() {
       );
       console.log("data", data);
       setLoading(false);
+
       if (data === {}) {
         setError(true);
       } else setSpot(data);
@@ -72,7 +74,7 @@ function SearchSpot() {
         ""
       )}
 
-      <Results data={spot} />
+      <Results loading={loading} data={spot} />
     </div>
   );
 }

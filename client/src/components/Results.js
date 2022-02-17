@@ -1,11 +1,18 @@
 import React from "react";
-import SpotResults from "./SpotResults";
+import SpotResults from "./SpotResults/";
+import Loader from "./Loader.js";
 
-function Results({ data }) {
+function Results({ data, loading }) {
   return (
-    <div className="spot__results-cont">
-      <SpotResults data={data} />
-    </div>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div fluid className="spot__results-cont">
+          <SpotResults data={data} />
+        </div>
+      )}
+    </>
   );
 }
 
