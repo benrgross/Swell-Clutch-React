@@ -1,14 +1,7 @@
 const router = require("express").Router();
+const puppeteer = require("puppeteer");
 const axios = require("axios");
 const cheerio = require("cheerio");
-const puppeteer = require("puppeteer");
-
-const headers = {
-  headers: {
-    "User-Agent":
-      "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
-  },
-};
 
 router.get("/report/:spot", async (req, res) => {
   try {
@@ -42,13 +35,15 @@ router.get("/report/:spot", async (req, res) => {
 });
 
 router.get("/search/:spot", async (req, res) => {
+  console.log(req.params.spot);
   try {
     let results = [];
     const browser = await puppeteer.launch({
+      headless: true,
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
-        '--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36"',
+        '--user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"',
       ],
       waitUntil: "domcontentloaded",
     });
@@ -82,6 +77,7 @@ router.get("/search/:spot", async (req, res) => {
     res.status(200).json(results);
   } catch (err) {
     res.send(err);
+    console.log(error);
   }
 });
 module.exports = router;
