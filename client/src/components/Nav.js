@@ -2,7 +2,7 @@ import { Nav, Navbar, Container } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function Navigation() {
-  const { loginWithRedirect, logOutWithredirect, user } = useAuth0();
+  const { loginWithRedirect, logout, user } = useAuth0();
 
   return (
     <Navbar bg="light" expand="lg">
@@ -18,10 +18,7 @@ function Navigation() {
           </Nav>
           <Nav className="ml-auto">
             {user ? (
-              <div
-                className="nav-link login-nav"
-                onClick={() => logOutWithredirect()}
-              >
+              <div className="nav-link login-nav" onClick={() => logout()}>
                 Log Out
               </div>
             ) : (
