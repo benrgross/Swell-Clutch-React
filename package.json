@@ -1,5 +1,5 @@
 {
-  "name": "react-cheerio-test",
+  "name": "swell-clutch",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -29,6 +29,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
+    "moment": "^2.29.1",
     "puppeteer": "^13.3.1",
     "react-bootstrap": "^2.0.3",
     "react-router-dom": "^5.2.0"
