@@ -16,9 +16,6 @@ a {
   box-sizing: border-box;
 }
 
-.login-nav {
-  cursor: pointer;
-}
 .brand__cont {
   display: flex;
   justify-content: center;

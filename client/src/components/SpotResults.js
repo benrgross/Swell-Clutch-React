@@ -9,12 +9,13 @@ function SearchSpotResults({ data }) {
   const [error, setError] = useState(false);
 
   const getSwell = async (e) => {
+    console.log(e.target.getAttribute("data-spotid"));
     e.preventDefault();
     setLoading(true);
     setError(false);
     try {
       const { data } = await axios.get(
-        `/api/getswell/currentswell/${e.target.getAttribute("data-spotid")}`
+        `/api/surf/report/${e.target.getAttribute("data-spotid")}`
       );
 
       console.log(data);

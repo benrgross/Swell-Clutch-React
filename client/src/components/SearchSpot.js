@@ -18,14 +18,16 @@ function SearchSpot() {
     setError(false);
 
     try {
-      const { data } = await axios.get(`/api/surf/${spotName.current.value}`);
+      const { data } = await axios.get(
+        `/api/surf/search/${spotName.current.value}`
+      );
       console.log("data", data);
       setLoading(false);
       if (data === {}) {
-        setSpot(data);
-        setSearch(false);
-        setError(false);
-      } else setError(true);
+        setError(true);
+      } else setSpot(data);
+      setSearch(false);
+      setError(false);
     } catch (error) {
       setLoading(false);
       setError(true);
