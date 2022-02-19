@@ -2,19 +2,18 @@ const prisma = require("../lib/pisma");
 
 module.exports = {
   findAllSessions: async function (req, res) {
-    const { email } = req.body.account;
+    const { email } = req.params;
     try {
       const session = await prisma.session.findMany({
         where: {
           userEmail: email,
         },
-        include: {
-          location: true,
-        },
-        orderBy: {
-          spotId: "asc",
+        select: {
+          id: true,
+          spot: true,
         },
       });
+
       res.status(200).send(session);
     } catch (err) {
       res.status(400).send(err);
@@ -22,7 +21,7 @@ module.exports = {
   },
 
   findSession: async function (req, res) {
-    const { id } = req.params.id;
+    const { id } = req.params;
     try {
       const session = await prisma.session.findUnique({
         where: {
@@ -31,6 +30,19 @@ module.exports = {
       });
 
       res.status(200).send(session);
+    } catch (err) {
+      res.status(400).send(err);
+    }
+  },
+
+  findSessionsOnLocation: async function (req, res) {
+    const { id } = req.params;
+    try {
+      const session = await prisma.session.findMany({
+        where: {
+          spotId: id,
+        },
+      });
     } catch (err) {
       res.status(400).send(err);
     }

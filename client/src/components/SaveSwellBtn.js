@@ -12,7 +12,7 @@ function SaveSwellBtn({ spot }) {
       spot: spot,
       account: user,
     };
-    const { data } = await axios.post("/api/swell/saveSwell", body);
+    const { data } = await axios.post("/api/session/saveSwell", body);
     console.log(data);
   };
   return (

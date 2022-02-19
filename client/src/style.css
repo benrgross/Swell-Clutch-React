@@ -26,6 +26,9 @@ a {
   color: #0070f3;
 }
 
+.dash__title-row {
+  border-bottom: 1px solid #8080806b;
+}
 .signUp__cont {
   padding: 10px;
 }
@@ -85,7 +88,7 @@ a {
   padding-right: 0px;
 }
 
-.current-swell__head-cont {
+/* .current-swell__head-cont {
   padding: 3rem;
   display: flex;
   justify-content: center;
@@ -96,7 +99,7 @@ a {
   font-weight: bolder;
   color: rgb(240, 239, 239);
   text-shadow: black 0px 0px 2px;
-}
+} */
 
 /* .current-swell__head-cont:after {
   opacity: 0.4;

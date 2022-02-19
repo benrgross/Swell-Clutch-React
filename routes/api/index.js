@@ -5,6 +5,6 @@ const dbRoutes = require("./db");
 
 router.use("/puppet", puppetRoutes);
 router.use("/surf", surflineRoutes);
-router.use("/swell", dbRoutes);
+router.use("/session", dbRoutes);
 
 module.exports = router;

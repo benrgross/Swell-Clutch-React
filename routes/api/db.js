@@ -2,7 +2,8 @@ const router = require("express").Router();
 const swellController = require("../../controller/swellController");
 
 router.route("/saveSwell").post(swellController.createSwell);
-router.route("/").get(swellController.findAllSessions);
+router.route("/:email").get(swellController.findAllSessions);
+router.route("/spot/:id").get(swellController.findSessionsOnLocation);
 router
   .route("/:id")
   .get(swellController.findSession)
