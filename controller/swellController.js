@@ -1,12 +1,72 @@
 const prisma = require("../lib/pisma");
 
 module.exports = {
-  createSwell: async (req, res) => {
-    console.log(req.body);
+  findAllSessions: async function (req, res) {
+    const { email } = req.body.account;
     try {
-      const user = await prisma.user.findUnique({
+      const session = await prisma.session.findMany({
         where: {
-          email: req.body.user.email,
+          userEmail: email,
+        },
+        include: {
+          location: true,
+        },
+        orderBy: {
+          spotId: "asc",
+        },
+      });
+      res.status(200).send(session);
+    } catch (err) {
+      res.status(400).send(err);
+    }
+  },
+
+  findSession: async function (req, res) {
+    const { id } = req.params.id;
+    try {
+      const session = await prisma.session.findUnique({
+        where: {
+          id: id,
+        },
+      });
+
+      res.status(200).send(session);
+    } catch (err) {
+      res.status(400).send(err);
+    }
+  },
+
+  deleteSession: async function (req, res) {
+    const { id } = req.params.id;
+    try {
+      const session = await prisma.session.delete({
+        where: {
+          id: id,
+        },
+      });
+
+      res.status(200).send(session);
+    } catch (err) {
+      res.status(400).send(err);
+    }
+  },
+
+  createSwell: async function (req, res) {
+    const { spot } = req.body;
+    const { account } = req.body;
+
+    try {
+      const user = await prisma.user.upsert({
+        where: {
+          email: account.email,
+        },
+        create: {
+          name: account.nickname,
+          email: account.email,
+        },
+        update: {
+          name: account.nickname,
+          email: account.email,
         },
       });
 
@@ -15,7 +75,7 @@ module.exports = {
           name: spot.name,
         },
         create: {
-          spot_id: _id,
+          spot_id: spot._id,
           name: spot.name,
           lat: spot.lat,
           lon: spot.lon,
@@ -25,7 +85,7 @@ module.exports = {
           subregionId: spot.subregionId,
           user: {
             connect: {
-              email: req.body.user.email,
+              email: account.email,
             },
           },
           session: {
@@ -35,7 +95,7 @@ module.exports = {
               utcOffset: spot.tide.current.utcOffset,
               surfMax: spot.waveHeight.max,
               surfMin: spot.waveHeight.min,
-              userEmail: user.email,
+              userEmail: account.email,
               waterTemp: `${spot.waterTemp.min} - ${spot.waterTemp.max}`,
               conditions: {
                 human: spot.conditions.human,
@@ -61,7 +121,7 @@ module.exports = {
           },
         },
         update: {
-          spot_id: _id,
+          spot_id: spot._id,
           name: spot.name,
           lat: spot.lat,
           lon: spot.lon,
@@ -71,7 +131,7 @@ module.exports = {
           subregionId: spot.subregionId,
           user: {
             connect: {
-              email: req.body.user.email,
+              email: account.email,
             },
           },
           session: {
@@ -81,7 +141,7 @@ module.exports = {
               utcOffset: spot.tide.current.utcOffset,
               surfMax: spot.waveHeight.max,
               surfMin: spot.waveHeight.min,
-              userEmail: user.email,
+              userEmail: account.email,
               waterTemp: `${spot.waterTemp.min} - ${spot.waterTemp.max}`,
               conditions: {
                 human: spot.conditions.human,
@@ -114,7 +174,7 @@ module.exports = {
 
       res.status(200).send(location);
     } catch (err) {
-      res.status(400).send(error);
+      res.status(400).send(err);
       console.log(err);
     }
   },

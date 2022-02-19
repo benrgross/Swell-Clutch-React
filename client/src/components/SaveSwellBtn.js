@@ -10,7 +10,7 @@ function SaveSwellBtn({ spot }) {
     console.log(user);
     const body = {
       spot: spot,
-      email: user.email,
+      account: user,
     };
     const { data } = await axios.post("/api/swell/saveSwell", body);
     console.log(data);
