@@ -17,14 +17,20 @@ function DashboardGallery() {
   const getSessions = async () => {
     try {
       console.log(user.email);
-      const { data } = await axios.get(`/api/session/${user.email}`);
+      let { data } = await axios.get(`/api/session/${user.email}`);
+      console.log(data);
+      var map = new Map();
 
-      const counts = {};
-      data.forEach((x) => {
-        counts[x] = (counts[x] || 0) + 1;
+      data.forEach((spot) => {
+        if (map.has(spot["id"])) {
+          map.get(spot["id"]).count++;
+        } else {
+          map.set(spot["id"], Object.assign(spot, { count: 1 }));
+        }
       });
-      console.log(counts);
-      await setSessions(data);
+      data = [...map.values()];
+      console.log(data);
+      setSessions(data);
       console.log(sessions);
     } catch (err) {
       console.log(err);
@@ -34,7 +40,7 @@ function DashboardGallery() {
   return (
     <>
       {sessions.map((session) => (
-        <SpotHeader key={session.spot.id} spot={session.spot} />
+        <SpotHeader key={session.id} spot={session} />
       ))}
     </>
   );

@@ -9,12 +9,13 @@ module.exports = {
           userEmail: email,
         },
         select: {
-          id: true,
           spot: true,
         },
       });
 
-      res.status(200).send(session);
+      const data = await flatten(session);
+
+      res.status(200).send(data);
     } catch (err) {
       res.status(400).send(err);
     }
@@ -191,3 +192,21 @@ module.exports = {
     }
   },
 };
+
+function flatten(objArr) {
+  let array = [];
+  for (let obj of objArr) {
+    let object = {};
+    for (let [key, value] of Object.entries(obj)) {
+      if (Object.prototype.toString.call(value) == "[object Object]") {
+        for (let [k, v] of Object.entries(value)) {
+          object[k] = v;
+        }
+      } else {
+        object[key] = value;
+      }
+    }
+    array.push(object);
+  }
+  return array;
+}
