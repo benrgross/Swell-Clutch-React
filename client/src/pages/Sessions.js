@@ -1,20 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import CurrentSwellCont from "../components/CurrentSwellCont";
 import axios from "axios";
 
 function Sessions() {
   const { id } = useParams();
+  const [sessions, setSessions] = useState();
 
   useEffect(() => {
-    getSessionsOnLocation();
-  }, []);
+    return getSessionsOnLocation();
+  }, []); //eslint-disable-line
 
   const getSessionsOnLocation = async () => {
-    const { data } = await axios.get(`/api/session/spot/${id}`);
-    console.log("data", data);
+    try {
+      const { data } = await axios.get(`/api/session/spot/${id}`);
+      console.log("data", data);
+      setSessions(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  return <div>Sessions</div>;
+  return <div>{}</div>;
 }
 
 export default Sessions;

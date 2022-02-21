@@ -8,14 +8,13 @@ function DashboardThumb({ spot }) {
   let history = useHistory();
   const getSessions = async (e) => {
     const spotId = e.target.getAttribute("data-spot-id");
-    console.log(spotId);
 
     history.push(`/sessions/${spotId}`);
   };
   return (
     <Col md={6} sm={12}>
       <Container
-        onClick={getSessions}
+        onClick={(e) => getSessions(e)}
         data-spot-id={spot.spot_id}
         style={{ backgroundImage: `url(${spot.thumbnail})` }}
         className="dashboard__thumb shadow-sm rounded"

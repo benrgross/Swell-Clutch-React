@@ -12,7 +12,7 @@ function DashboardGallery() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      return getSessions();
+      getSessions();
     }
   }, [isAuthenticated]); //eslint-disable-line
 
@@ -28,9 +28,9 @@ function DashboardGallery() {
     }
   };
 
-  const countAndSortData = (data) => {
+  const countAndSortData = async (data) => {
     var map = new Map();
-    data.forEach((spot) => {
+    await data.forEach((spot) => {
       if (map.has(spot["id"])) {
         map.get(spot["id"]).count++;
       } else {

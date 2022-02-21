@@ -38,7 +38,6 @@ module.exports = {
   },
 
   findSessionsOnLocation: async function (req, res) {
-    console.log(req.params);
     const { id } = req.params;
     try {
       const session = await prisma.session.findMany({
