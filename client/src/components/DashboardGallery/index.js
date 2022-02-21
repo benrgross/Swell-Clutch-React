@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
-import SpotHeader from "../SpotHeader";
+
+import DashboardThumb from "../DashboardThumb";
 
 function DashboardGallery() {
   const { isAuthenticated, user } = useAuth0();
   const [sessions, setSessions] = useState([]);
   const [error, setError] = useState(false);
-  const [loginMessage, setLoginMessage] = useState(false);
 
   useEffect(() => {
     if (isAuthenticated) {
       return getSessions();
-    } else return setLoginMessage(true);
+    }
   }, [isAuthenticated]); //eslint-disable-line
 
   const getSessions = async () => {
@@ -42,9 +42,22 @@ function DashboardGallery() {
 
   return (
     <>
-      {sessions.map((session) => (
-        <SpotHeader key={session.id} spot={session} />
-      ))}
+      {!isAuthenticated ? (
+        <Container className="login-message">
+          <h4>Please Login To View Sessions</h4>
+        </Container>
+      ) : (
+        <>
+          {" "}
+          {sessions.map((session) => (
+            <DashboardThumb
+              key={session.id}
+              spot={session}
+              className="dash__thumb"
+            />
+          ))}{" "}
+        </>
+      )}
     </>
   );
 }

@@ -1,4 +1,5 @@
 const prisma = require("../lib/pisma");
+const flatten = require("../lib/flatten");
 
 module.exports = {
   findAllSessions: async function (req, res) {
@@ -37,6 +38,7 @@ module.exports = {
   },
 
   findSessionsOnLocation: async function (req, res) {
+    console.log(req.params);
     const { id } = req.params;
     try {
       const session = await prisma.session.findMany({
@@ -44,6 +46,7 @@ module.exports = {
           spotId: id,
         },
       });
+      res.status(200).send(session);
     } catch (err) {
       res.status(400).send(err);
     }
@@ -192,21 +195,3 @@ module.exports = {
     }
   },
 };
-
-function flatten(objArr) {
-  let array = [];
-  for (let obj of objArr) {
-    let object = {};
-    for (let [key, value] of Object.entries(obj)) {
-      if (Object.prototype.toString.call(value) == "[object Object]") {
-        for (let [k, v] of Object.entries(value)) {
-          object[k] = v;
-        }
-      } else {
-        object[key] = value;
-      }
-    }
-    array.push(object);
-  }
-  return array;
-}
