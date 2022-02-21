@@ -2,9 +2,11 @@ import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useHistory } from "react-router-dom";
 
 function SaveSwellBtn({ spot }) {
   const { user } = useAuth0();
+  const history = useHistory();
 
   const saveSwell = async () => {
     console.log(user);
@@ -13,7 +15,7 @@ function SaveSwellBtn({ spot }) {
       account: user,
     };
     const { data } = await axios.post("/api/session/saveSwell", body);
-    console.log(data);
+    history.push("/");
   };
   return (
     <Row>

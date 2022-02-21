@@ -45,6 +45,7 @@ model Session {
   utcOffset     Int      
   surfMin       Float
   surfMax       Float
+  occasional    Float?
   waterTemp     String?
   wind          Json?
   tide          Json?

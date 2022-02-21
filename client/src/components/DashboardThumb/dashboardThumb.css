@@ -2,12 +2,28 @@
   padding: 3rem;
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 0rem;
   margin-bottom: 0rem;
-  width: 85% !important;
+  width: 88% !important;
   background-size: 100% 100%;
   font-weight: bolder;
   color: rgb(240, 239, 239);
   text-shadow: black 0px 0px 2px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .dashboard__thumb {
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    width: 100% !important;
+    background-size: 100% 100%;
+    font-weight: bolder;
+    color: rgb(240, 239, 239);
+    text-shadow: black 0px 0px 2px;
+    cursor: pointer;
+  }
 }

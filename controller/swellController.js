@@ -66,6 +66,23 @@ module.exports = {
     }
   },
 
+  deleteSessionsFromLocation: async function (req, res) {
+    const { id } = req.body;
+    console.log(id);
+    try {
+      const session = await prisma.session.deleteMany({
+        where: {
+          spotId: id,
+        },
+      });
+      console.log(session);
+      res.status(200).send(session);
+    } catch (err) {
+      res.status(400).send(err);
+      console.log(err);
+    }
+  },
+
   createSwell: async function (req, res) {
     const { spot } = req.body;
     const { account } = req.body;
@@ -110,6 +127,7 @@ module.exports = {
               utcOffset: spot.tide.current.utcOffset,
               surfMax: spot.waveHeight.max,
               surfMin: spot.waveHeight.min,
+              occasional: spot.waveHeight.occasional,
               userEmail: account.email,
               waterTemp: `${spot.waterTemp.min} - ${spot.waterTemp.max}`,
               conditions: {

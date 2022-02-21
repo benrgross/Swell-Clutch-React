@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
-
+import "./dashboardGallery.css";
 import DashboardThumb from "../DashboardThumb";
+import API from "../../utils /API";
 
 function DashboardGallery() {
   const { isAuthenticated, user } = useAuth0();
@@ -40,22 +41,26 @@ function DashboardGallery() {
     return (data = [...map.values()]).sort((a, b) => b.count - a.count);
   };
 
+  const deleteSpot = async (spotId) => {
+    const { data } = await API.deleteSpot(spotId);
+    setSessions(sessions.filter((session) => session.spot_id !== spotId));
+  };
+
   return (
     <>
       {!isAuthenticated ? (
-        <Container className="login-message">
+        <Container className="login-message d-flex justify-content-center">
           <h4>Please Login To View Sessions</h4>
         </Container>
       ) : (
         <>
-          {" "}
           {sessions.map((session) => (
             <DashboardThumb
               key={session.id}
               spot={session}
               className="dash__thumb"
             />
-          ))}{" "}
+          ))}
         </>
       )}
     </>

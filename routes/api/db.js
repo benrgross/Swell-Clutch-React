@@ -7,6 +7,7 @@ router.route("/spot/:id").get(swellController.findSessionsOnLocation);
 router
   .route("/:id")
   .get(swellController.findSession)
-  .delete(swellController.deleteSession);
+  .delete(swellController.deleteSessionsFromLocation);
 
+router.route("/delete").post(swellController.deleteSessionsFromLocation);
 module.exports = router;

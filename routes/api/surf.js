@@ -68,7 +68,7 @@ router.get("/search/:spot", async (req, res) => {
         spotId: spotId,
         href: href,
       };
-      console.log(spot);
+
       results.push(spot);
     });
 

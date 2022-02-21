@@ -1,0 +1,21 @@
+.dash__delete-btn {
+  opacity: 0.8;
+  font-size: 12px !important;
+  position: relative;
+  top: 2.1rem;
+  left: 2.4rem;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  .dash__delete-btn {
+    opacity: 0.8;
+    font-size: 12px !important;
+    position: relative;
+    padding: 6px !important;
+    height: 30px;
+    top: 2.1rem;
+    left: 0rem;
+    z-index: 1;
+  }
+}
