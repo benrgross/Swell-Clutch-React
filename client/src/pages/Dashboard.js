@@ -7,7 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 function Dashboard() {
   const { user } = useAuth0();
   return (
-    <Container>
+    <div id="dash__cont">
       <Header />
       <Row className="dash__title-row">
         <Col md={4} sm={6}>
@@ -25,7 +25,7 @@ function Dashboard() {
       <Row>
         <DashboardGallery />
       </Row>
-    </Container>
+    </div>
   );
 }
 

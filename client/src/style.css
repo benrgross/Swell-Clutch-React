@@ -238,9 +238,16 @@ a {
 
 .session__page-cont {
   background-color: rgba(245, 241, 241, 0.612);
+  padding: 0rem 0.5rem;
+  padding-bottom: 5rem;
 }
 
 #search__cont {
-  height: 800px;
-  background-color: #e5eff85c;
+  height: 1000px;
+  background-color: rgba(245, 241, 241, 0.612);
+}
+
+#dash__cont {
+  background-color: rgba(245, 241, 241, 0.612);
+  padding: 2rem 5rem 2rem 5rem;
 }

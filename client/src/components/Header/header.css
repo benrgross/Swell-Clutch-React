@@ -1,9 +1,12 @@
 .brand__cont {
   display: flex;
   justify-content: center;
-  margin: auto;
-  padding: 3rem;
+  padding: 2rem;
 }
 .brand__header {
   color: #0070f3;
+  font-weight: 800;
+  font-size: 3rem;
+  text-shadow: #000 0px 0px 1px;
+  -webkit-font-smoothing: antialiased;
 }

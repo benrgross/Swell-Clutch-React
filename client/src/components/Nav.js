@@ -5,7 +5,7 @@ function Navigation() {
   const { loginWithRedirect, logout, user } = useAuth0();
 
   return (
-    <Navbar style={{ backgroundColor: "#e4edf596" }} bg="light" expand="lg">
+    <Navbar style={{ backgroundColor: "rgb(4 148 250 / 2%)" }} expand="lg">
       <Container>
         <Navbar.Brand style={{ color: "#0070f3" }} href="/">
           Swell Clutch

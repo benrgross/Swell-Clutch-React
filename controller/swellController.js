@@ -39,16 +39,29 @@ module.exports = {
 
   findSessionsOnLocation: async function (req, res) {
     const { id } = req.params;
+    console.log(typeof id);
+
     try {
-      const session = await prisma.session.findMany({
-        where: {
-          spotId: id,
-        },
-        include: {
-          spot: true,
-        },
-      });
-      res.status(200).send(session);
+      if (!/\D/.test(id)) {
+        console.log(id);
+        const singleSession = await prisma.session.findUnique({
+          where: {
+            id: Number(id),
+          },
+        });
+        console.log(singleSession);
+        res.status(200).send(singleSession);
+      } else {
+        const session = await prisma.session.findMany({
+          where: {
+            spotId: id,
+          },
+          include: {
+            spot: true,
+          },
+        });
+        res.status(200).send(session);
+      }
     } catch (err) {
       res.status(400).send(err);
     }
