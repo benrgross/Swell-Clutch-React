@@ -45,6 +45,7 @@ model Session {
   utcOffset     Int      
   surfMin       Float
   surfMax       Float
+  name          String?
   occasional    Float?
   relation      String?
   waterTemp     String?

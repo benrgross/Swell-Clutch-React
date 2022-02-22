@@ -125,6 +125,7 @@ module.exports = {
           },
           session: {
             create: {
+              name: spot.name,
               timeStamp: spot.tide.current.timestamp,
               timeZone: spot.timezone,
               utcOffset: spot.tide.current.utcOffset,
@@ -173,6 +174,7 @@ module.exports = {
           },
           session: {
             create: {
+              name: spot.name,
               timeStamp: spot.tide.current.timestamp,
               timeZone: spot.timezone,
               utcOffset: spot.tide.current.utcOffset,
