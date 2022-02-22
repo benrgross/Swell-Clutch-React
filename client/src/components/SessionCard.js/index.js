@@ -72,7 +72,7 @@ function SessionCard({ spot }) {
               </Row>
               <Row>
                 <div className="current-swell__humanRelation">
-                  {spot.nextType === "LOW"
+                  {spot.tide.nextType === "LOW"
                     ? `Low tide ${spot.tide.nextHeight}ft in `
                     : `High tide ${spot.tide.nextHeight}ft in `}{" "}
                   <TimeDifference

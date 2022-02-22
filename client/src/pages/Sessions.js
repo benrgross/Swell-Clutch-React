@@ -13,7 +13,7 @@ function Sessions() {
 
   useEffect(() => {
     return getSessionsOnLocation();
-  }, []); //eslint-disable-line
+  }, [id]); //eslint-disable-line
 
   const getSessionsOnLocation = async () => {
     try {

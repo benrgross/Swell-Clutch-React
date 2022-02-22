@@ -12,7 +12,9 @@ function ReportCard({ report }) {
       <Container className="current-swell__report-cont rounded shadow-sm">
         <Row>
           <div className="d-flex justify-content-center current-swell__report-header-cont">
-            <h4 className="current-swell__report-header">Surf Report</h4>
+            <h4 className="current-swell__report-header">
+              Current Surf Report
+            </h4>
           </div>
         </Row>
         <Row>
@@ -33,8 +35,8 @@ function ReportCard({ report }) {
               </Row>
               <Row>
                 <div className="current-swell__waveHeight">
-                  {spot.waveHeight.min.toFixed(1)} -{" "}
-                  {spot.waveHeight.max.toFixed(1)}ft{" "}
+                  {spot.waveHeight.min.toFixed(0)} -{" "}
+                  {spot.waveHeight.max.toFixed(0)}ft{" "}
                   {spot.waveHeight.occasional > 0
                     ? `w/ occ ${spot.waveHeight.occasional.toFixed(1)}ft`
                     : ""}
@@ -90,23 +92,6 @@ function ReportCard({ report }) {
               <Row>
                 <div className="current-swell__humanRelation">
                   {spot.wind.directionType}
-                </div>
-              </Row>
-            </div>
-          </Col>
-          <Col>
-            <div className="current-swell__report-div">
-              <Row>
-                <div className="current-swell__waveHeight-desc">Weather</div>
-              </Row>
-              <Row>
-                <div className="current-swell__waveHeight">
-                  {spot.weather.temperature.toFixed(0)}F
-                </div>
-              </Row>
-              <Row>
-                <div className="current-swell__humanRelation">
-                  {spot.weather.condition}
                 </div>
               </Row>
             </div>

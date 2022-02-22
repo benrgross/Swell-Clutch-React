@@ -19,10 +19,10 @@ function SessionGallery({ sessions, name, report }) {
       {sessions.length === 1 ? (
         <Row>
           <Col md={6} sm={12} className="session__card-col">
-            <ReportCard report={report} />
+            <SessionCard spot={sessions[0]} />
           </Col>
           <Col md={6} sm={12} className="session__card-col">
-            <SessionCard spot={sessions[0]} />
+            <ReportCard report={report} />
           </Col>
         </Row>
       ) : (

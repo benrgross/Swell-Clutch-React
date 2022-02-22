@@ -6,7 +6,7 @@ function TimeDifference({ timestamp, nextTimestamp }) {
 
   let difference = (Date.parse(nextT) - Date.parse(currentT)) / 3600;
 
-  return <span>{difference.toFixed(0)}</span>;
+  return <span>{difference.toFixed(1)}</span>;
 }
 
 export default TimeDifference;
