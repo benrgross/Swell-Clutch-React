@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import TideDirectionSesh from "../TideDirectionSesh";
 import RotateArrow from "../RotateArrow";
-import ConvertTimeStamp from "../ConvertTimeStamp";
+import SpotConditions from "../SpotConditions";
 import BuoySwells from "../BuoySwells";
 import ConvertTimeWithDate from "../ConvertTimeWithDate";
 import TimeDifference from "../TimeDifference";
@@ -24,8 +24,10 @@ function SessionCard({ spot }) {
             </div>
           </Row>
           <Row>
-            <div className="d-flex justify-content-center">
-              <h6>{spot.conditions.value}</h6>
+            <div className="d-flex justify-content-center session__card-condition">
+              <h6>
+                <SpotConditions conditions={spot.conditions.value} />
+              </h6>
             </div>
           </Row>
           <Row>
@@ -41,7 +43,7 @@ function SessionCard({ spot }) {
                 </Row>
                 <Row>
                   <div className="current-swell__waveHeight">
-                    {spot.surfMin} - {spot.surfMax}ft{" "}
+                    {spot.surfMin.toFixed(0)} - {spot.surfMax.toFixed(0)}ft{" "}
                     {spot.occasional > 0
                       ? `w/ occ ${spot.occasional.toFixed(1)}ft`
                       : ""}

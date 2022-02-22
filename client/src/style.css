@@ -218,8 +218,29 @@ a {
   .dash__info {
     margin-top: 0rem;
   }
+
+  .search__spot-btn {
+    margin-top: 1rem !important;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background-color: #0070f3;
+    width: 100%;
+  }
+  .save-btn {
+    width: 80%;
+  }
+  .back-to-search-btn {
+    width: 80%;
+    margin-bottom: 3rem;
+  }
 }
 
 .session__page-cont {
   background-color: rgba(245, 241, 241, 0.612);
+}
+
+#search__cont {
+  height: 800px;
+  background-color: #e5eff85c;
 }
