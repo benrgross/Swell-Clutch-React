@@ -8,7 +8,7 @@ function Results({ data, loading }) {
       {loading ? (
         <Loader />
       ) : (
-        <div fluid className="spot__results-cont">
+        <div className="spot__results-cont">
           <SpotResults data={data} />
         </div>
       )}

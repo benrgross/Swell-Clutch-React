@@ -1,3 +1,5 @@
+
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -43,6 +45,8 @@ model Session {
   utcOffset     Int      
   surfMin       Float
   surfMax       Float
+  occasional    Float?
+  relation      String?
   waterTemp     String?
   wind          Json?
   tide          Json?

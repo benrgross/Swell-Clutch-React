@@ -1,0 +1,9 @@
+.brand__cont {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 3rem;
+}
+.brand__header {
+  color: #0070f3;
+}

@@ -2,10 +2,10 @@ import { Nav, Navbar, Container } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function Navigation() {
-  const { loginWithRedirect, logOutWithredirect, user } = useAuth0();
+  const { loginWithRedirect, logout, user } = useAuth0();
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar style={{ backgroundColor: "#e4edf596" }} bg="light" expand="lg">
       <Container>
         <Navbar.Brand style={{ color: "#0070f3" }} href="/">
           Swell Clutch
@@ -19,8 +19,8 @@ function Navigation() {
           <Nav className="ml-auto">
             {user ? (
               <div
-                className="nav-link login-nav"
-                onClick={() => logOutWithredirect()}
+                className="nav-link login-nav pointer"
+                onClick={() => logout()}
               >
                 Log Out
               </div>

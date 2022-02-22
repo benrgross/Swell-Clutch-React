@@ -7,7 +7,7 @@ function Loader() {
       <Row>
         <Col></Col>
         <Col md={4}>
-          <div className="loader"></div>;
+          <div className="loader"></div>
         </Col>
         <Col></Col>
       </Row>

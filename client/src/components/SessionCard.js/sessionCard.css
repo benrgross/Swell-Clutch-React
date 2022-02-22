@@ -1,0 +1,21 @@
+.session__card-cont {
+  width: 100% !important;
+  background-color: white;
+  cursor: pointer;
+}
+
+.session__card-col {
+  margin-left: 0px !important;
+  padding: 4rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .session__card-col {
+    margin-left: 0px !important;
+    padding: 1rem;
+  }
+
+  .current-swell__report-col {
+    padding: 0.1rem !important;
+  }
+}
