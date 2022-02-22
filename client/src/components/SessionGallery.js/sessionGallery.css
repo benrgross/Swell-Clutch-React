@@ -17,3 +17,12 @@
 .session__gallery-div {
   width: 50%;
 }
+
+@media only screen and (max-width: 600px) {
+  .session__report-btn {
+    width: 100%;
+
+    position: relative;
+    top: 39.1rem;
+  }
+}
