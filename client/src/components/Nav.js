@@ -5,7 +5,7 @@ function Navigation() {
   const { loginWithRedirect, logout, user } = useAuth0();
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar style={{ backgroundColor: "#e4edf596" }} bg="light" expand="lg">
       <Container>
         <Navbar.Brand style={{ color: "#0070f3" }} href="/">
           Swell Clutch
@@ -18,7 +18,10 @@ function Navigation() {
           </Nav>
           <Nav className="ml-auto">
             {user ? (
-              <div className="nav-link login-nav" onClick={() => logout()}>
+              <div
+                className="nav-link login-nav pointer"
+                onClick={() => logout()}
+              >
                 Log Out
               </div>
             ) : (

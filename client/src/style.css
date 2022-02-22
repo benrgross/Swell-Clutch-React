@@ -26,6 +26,10 @@ a {
   color: #0070f3;
 }
 
+.login-nav {
+  cursor: pointer;
+}
+
 .dash__title-row {
   border-bottom: 1px solid #8080806b;
 }
