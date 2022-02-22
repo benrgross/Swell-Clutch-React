@@ -44,6 +44,9 @@ module.exports = {
         where: {
           spotId: id,
         },
+        include: {
+          spot: true,
+        },
       });
       res.status(200).send(session);
     } catch (err) {
@@ -127,7 +130,8 @@ module.exports = {
               utcOffset: spot.tide.current.utcOffset,
               surfMax: spot.waveHeight.max,
               surfMin: spot.waveHeight.min,
-              occasional: spot.waveHeight.occasional,
+              occasional: spot.waveHeight.occasional || 0,
+              relation: spot.waveHeight.humanRelation,
               userEmail: account.email,
               waterTemp: `${spot.waterTemp.min} - ${spot.waterTemp.max}`,
               conditions: {
@@ -174,6 +178,8 @@ module.exports = {
               utcOffset: spot.tide.current.utcOffset,
               surfMax: spot.waveHeight.max,
               surfMin: spot.waveHeight.min,
+              occasional: spot.waveHeight.occasional || 0,
+              relation: spot.waveHeight.humanRelation,
               userEmail: account.email,
               waterTemp: `${spot.waterTemp.min} - ${spot.waterTemp.max}`,
               conditions: {

@@ -22,7 +22,7 @@ function Sessions() {
   };
 
   return (
-    <div>
+    <div className="session__page-cont">
       <SessionGallery sessions={sessions} />
     </div>
   );

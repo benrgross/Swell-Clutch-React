@@ -46,6 +46,7 @@ model Session {
   surfMin       Float
   surfMax       Float
   occasional    Float?
+  relation      String?
   waterTemp     String?
   wind          Json?
   tide          Json?
