@@ -28,7 +28,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
-    "puppeteer": "^13.3.2",
-    "react-bootstrap": "^2.1.2"
+    "puppeteer": "^13.3.2"
   }
 }
