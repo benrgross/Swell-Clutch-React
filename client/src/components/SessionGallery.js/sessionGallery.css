@@ -6,3 +6,14 @@
   text-shadow: #000 0px 0px 1px;
   -webkit-font-smoothing: antialiased;
 }
+
+.session__report-btn {
+  width: 25%;
+  opacity: 0.9;
+  position: relative;
+  top: 2.5rem;
+}
+
+.session__gallery-div {
+  width: 50%;
+}

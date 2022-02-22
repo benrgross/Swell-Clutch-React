@@ -7,7 +7,7 @@ import "./currentSwell.css";
 
 export default function CurrentSwellCont({ spot }) {
   return (
-    <Row className="current-swell__cont">
+    <>
       <Col></Col>
       <Col md={6} sm={12} className="current-swell__report">
         <Container
@@ -131,6 +131,6 @@ export default function CurrentSwellCont({ spot }) {
         </Container>
       </Col>
       <Col></Col>
-    </Row>
+    </>
   );
 }

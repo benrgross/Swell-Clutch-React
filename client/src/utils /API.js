@@ -9,4 +9,11 @@ export default {
   deleteSpot: function (spotId) {
     return axios.post(`/api/session/delete`, { id: spotId });
   },
+
+  getReport: function (spotId) {
+    return axios.get(`/api/surf/report/${spotId}`);
+  },
+  getSessions: function (id) {
+    return axios.get(`/api/session/spot/${id}`);
+  },
 };

@@ -4,6 +4,7 @@ const flatten = require("../lib/flatten");
 module.exports = {
   findAllSessions: async function (req, res) {
     const { email } = req.params;
+
     try {
       const session = await prisma.session.findMany({
         where: {
@@ -39,18 +40,17 @@ module.exports = {
 
   findSessionsOnLocation: async function (req, res) {
     const { id } = req.params;
-    console.log(typeof id);
 
     try {
+      let data = [];
       if (!/\D/.test(id)) {
-        console.log(id);
         const singleSession = await prisma.session.findUnique({
           where: {
             id: Number(id),
           },
         });
-        console.log(singleSession);
-        res.status(200).send(singleSession);
+        data.push(singleSession);
+        res.status(200).send(data);
       } else {
         const session = await prisma.session.findMany({
           where: {
@@ -76,7 +76,7 @@ module.exports = {
         },
       });
 
-      res.status(200).send(session);
+      res.status(200).send([...session]);
     } catch (err) {
       res.status(400).send(err);
     }

@@ -251,3 +251,10 @@ a {
   background-color: rgba(245, 241, 241, 0.612);
   padding: 2rem 5rem 2rem 5rem;
 }
+
+@media only screen and (max-width: 600px) {
+  #dash__cont {
+    background-color: rgba(245, 241, 241, 0.612);
+    padding: 0rem 1rem 0rem 1rem;
+  }
+}

@@ -1,33 +1,23 @@
 import React from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import TideDirectionSesh from "../TideDirectionSesh";
+import TideDirection from "../TideDirection";
 import RotateArrow from "../RotateArrow";
-import SpotConditions from "../SpotConditions";
+import ConvertTimeStamp from "../ConvertTimeStamp";
 import BuoySwells from "../BuoySwells";
-import ConvertTimeWithDate from "../ConvertTimeWithDate";
-import TimeDifference from "../TimeDifference";
-import "../CurrentSwellCont/currentSwell.css";
-import "./sessionCard.css";
+import { Row, Col, Container } from "react-bootstrap";
 
-function SessionCard({ spot }) {
-  console.log("session card", spot);
+function ReportCard({ report }) {
+  const { spot } = report;
   return (
     <>
-      <Container className="session__card-cont rounded shadow-sm">
+      <Container className="current-swell__report-cont rounded shadow-sm">
         <Row>
           <div className="d-flex justify-content-center current-swell__report-header-cont">
-            <h4 className="current-swell__report-header text-center">
-              <ConvertTimeWithDate
-                timestamp={spot.timeStamp}
-              ></ConvertTimeWithDate>
-            </h4>
+            <h4 className="current-swell__report-header">Surf Report</h4>
           </div>
         </Row>
         <Row>
-          <div className="d-flex justify-content-center session__card-condition">
-            <h6>
-              <SpotConditions conditions={spot.conditions.value} />
-            </h6>
+          <div className="d-flex justify-content-center">
+            <h6>{spot.conditions.value}</h6>
           </div>
         </Row>
         <Row>
@@ -43,15 +33,16 @@ function SessionCard({ spot }) {
               </Row>
               <Row>
                 <div className="current-swell__waveHeight">
-                  {spot.surfMin.toFixed(0)} - {spot.surfMax.toFixed(0)}ft{" "}
-                  {spot.occasional > 0
-                    ? ` occ ${spot.occasional.toFixed(1)}ft`
+                  {spot.waveHeight.min.toFixed(1)} -{" "}
+                  {spot.waveHeight.max.toFixed(1)}ft{" "}
+                  {spot.waveHeight.occasional > 0
+                    ? `w/ occ ${spot.waveHeight.occasional.toFixed(1)}ft`
                     : ""}
                 </div>
               </Row>
               <Row>
                 <div className="current-swell__humanRelation">
-                  {spot.relation}{" "}
+                  {spot.waveHeight.humanRelation}{" "}
                 </div>
               </Row>
             </div>
@@ -66,20 +57,18 @@ function SessionCard({ spot }) {
               </Row>
               <Row>
                 <div className="current-swell__waveHeight">
-                  {spot.tide.height.toFixed(1)} ft{" "}
-                  <TideDirectionSesh tide={spot.tide} />
+                  {spot.tide.current.height.toFixed(1)} ft{" "}
+                  <TideDirection tide={spot.tide} />
                 </div>
               </Row>
               <Row>
                 <div className="current-swell__humanRelation">
-                  {spot.nextType === "LOW"
-                    ? `Low tide ${spot.tide.nextHeight}ft in `
-                    : `High tide ${spot.tide.nextHeight}ft in `}{" "}
-                  <TimeDifference
-                    timestamp={spot.timeStamp}
-                    nextTimestamp={spot.tide.nextTime}
-                  />
-                  hrs
+                  {spot.tide.next.type === "LOW"
+                    ? `Low tide ${spot.tide.next.height.toFixed(1)}ft at `
+                    : `High tide ${spot.tide.next.height.toFixed(
+                        1
+                      )}ft at `}{" "}
+                  <ConvertTimeStamp timestamp={spot.tide.next.timestamp} />
                 </div>
               </Row>
             </div>
@@ -105,7 +94,23 @@ function SessionCard({ spot }) {
               </Row>
             </div>
           </Col>
-          <Col></Col>
+          <Col>
+            <div className="current-swell__report-div">
+              <Row>
+                <div className="current-swell__waveHeight-desc">Weather</div>
+              </Row>
+              <Row>
+                <div className="current-swell__waveHeight">
+                  {spot.weather.temperature.toFixed(0)}F
+                </div>
+              </Row>
+              <Row>
+                <div className="current-swell__humanRelation">
+                  {spot.weather.condition}
+                </div>
+              </Row>
+            </div>
+          </Col>
 
           <Col md={12}>
             <div className="buoy__cont">
@@ -121,7 +126,9 @@ function SessionCard({ spot }) {
         </Row>
       </Container>
     </>
+    //   );
+    // }
   );
 }
 
-export default SessionCard;
+export default ReportCard;
