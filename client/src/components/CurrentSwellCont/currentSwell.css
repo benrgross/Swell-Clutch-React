@@ -103,6 +103,15 @@
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
+.current-swell__button-cont {
+  /* backgmarground-color: rgba(245, 241, 241, 0.612); */
+  height: 15rem;
+}
+
+.upload_cont {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
 
 @media only screen and (max-width: 600px) {
   .current-swell__waveHeight-col {
@@ -116,6 +125,15 @@
     padding: 1rem !important;
   }
   .current-swell__waveHeight {
-    font-size: 1.5rem !important;
+    font-size: 1rem !important;
+  }
+  .upload_cont {
+    margin: auto;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    width: 90%;
+  }
+  .current-swell__spot-conditions {
+    margin-bottom: 1rem;
   }
 }

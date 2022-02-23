@@ -1,6 +1,8 @@
 .spot__results-col {
-  margin-top: 2rem;
+  margin-top: 3rem !important;
   padding: 1rem;
+
+  margin-bottom: 35rem;
 }
 
 .spot__results-cont {

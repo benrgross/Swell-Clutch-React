@@ -4,9 +4,9 @@ import SearchSpot from "../components/SearchSpot.js/index.js";
 
 function Search() {
   return (
-    <div id="search__cont">
+    <Container fluid id="search__cont">
       <SearchSpot />
-    </div>
+    </Container>
   );
 }
 

@@ -4,6 +4,8 @@ import RotateArrow from "../RotateArrow";
 import ConvertTimeStamp from "../ConvertTimeStamp";
 import BuoySwells from "../BuoySwells";
 import "./currentSwell.css";
+import ImageUploader from "../ImageUploader";
+import SpotConditions from "../SpotConditions";
 
 export default function CurrentSwellCont({ spot }) {
   return (
@@ -21,7 +23,12 @@ export default function CurrentSwellCont({ spot }) {
           </Row>
           <Row>
             <div className="d-flex justify-content-center">
-              <h6>{spot.conditions.value}</h6>
+              <h6>
+                <SpotConditions
+                  conditions={spot.conditions.value}
+                  className="current-swell__spot-conditions"
+                />
+              </h6>
             </div>
           </Row>
           <Row>
@@ -127,6 +134,15 @@ export default function CurrentSwellCont({ spot }) {
                 />
               </div>
             </Col>
+          </Row>
+          <Row>
+            <Col></Col>
+            <Col md={6}>
+              <div className="upload_cont">
+                <ImageUploader />
+              </div>
+            </Col>
+            <Col></Col>
           </Row>
         </Container>
       </Col>

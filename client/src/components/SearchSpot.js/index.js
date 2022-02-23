@@ -42,7 +42,7 @@ function SearchSpot() {
         <Row>
           <Col></Col>
           <Col md={6} sm={12}>
-            <Container className="search__cont shadow-sm ">
+            <Container className="search__cont-class shadow-sm ">
               <Form>
                 <Form.Group className="mb-3" controlId="formBasicSearch">
                   <Form.Label className="search__spot-label">
