@@ -3,11 +3,22 @@ import TideDirection from "../TideDirection";
 import RotateArrow from "../RotateArrow";
 import ConvertTimeStamp from "../ConvertTimeStamp";
 import BuoySwells from "../BuoySwells";
-import "./currentSwell.css";
+import Dropzone from "react-dropzone-uploader";
 import ImageUploader from "../ImageUploader";
 import SpotConditions from "../SpotConditions";
+import "react-dropzone-uploader/dist/styles.css";
+import "./currentSwell.css";
 
 export default function CurrentSwellCont({ spot }) {
+  const handleChangeStatus = ({ meta, file }, status) => {
+    console.log(status, meta, file);
+  };
+
+  // receives array of files that are done uploading when submit button is clicked
+  const handleSubmit = (files) => {
+    console.log(files.map((f) => f.meta));
+  };
+
   return (
     <>
       <Col></Col>
@@ -24,10 +35,7 @@ export default function CurrentSwellCont({ spot }) {
           <Row>
             <div className="d-flex justify-content-center">
               <h6>
-                <SpotConditions
-                  conditions={spot.conditions.value}
-                  className="current-swell__spot-conditions"
-                />
+                <SpotConditions conditions={spot.conditions.value} />
               </h6>
             </div>
           </Row>
@@ -139,7 +147,14 @@ export default function CurrentSwellCont({ spot }) {
             <Col></Col>
             <Col md={6}>
               <div className="upload_cont">
-                <ImageUploader />
+                <Dropzone
+                  maxFiles={1}
+                  multiple={false}
+                  inputContent="Upload An Image To Save"
+                  onChangeStatus={handleChangeStatus}
+                  onSubmit={handleSubmit}
+                  accept="image/*,audio/*,video/*"
+                />
               </div>
             </Col>
             <Col></Col>

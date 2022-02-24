@@ -108,10 +108,24 @@
   height: 15rem;
 }
 
+.dzu-inputLabel {
+}
+
+/* .dzu-inputLabel::after {
+  content: "hello";
+} */
 .upload_cont {
   margin-bottom: 2rem;
   margin-top: 1rem;
 }
+/* 
+.upload-content {
+  position: relative;
+  z-index: 1;
+  top: 4rem;
+  left: 4rem;
+  cursor: pointer;
+} */
 
 @media only screen and (max-width: 600px) {
   .current-swell__waveHeight-col {
