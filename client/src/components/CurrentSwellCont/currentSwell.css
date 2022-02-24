@@ -147,7 +147,7 @@
 }
 .fadeIn {
   opacity: 1;
-  transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
+  transition: width 0.3s, height 0.3s, opacity 0.3s 0.3s;
 }
 
 @media only screen and (max-width: 600px) {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Row, Col, Container, Alert } from "react-bootstrap";
+import { Row, Col, Container, Alert, Button } from "react-bootstrap";
 import TideDirection from "../TideDirection";
 import RotateArrow from "../RotateArrow";
 import ConvertTimeStamp from "../ConvertTimeStamp";
@@ -7,44 +7,54 @@ import BuoySwells from "../BuoySwells";
 import Dropzone from "react-dropzone-uploader";
 import SpotConditions from "../SpotConditions";
 import API from "../../utils /API";
+import SaveSwellBtn from "../SaveSwellBtn";
 import "react-dropzone-uploader/dist/styles.css";
 import "./currentSwell.css";
 
 export default function CurrentSwellCont({ spot }) {
-  const [imageUrl, setImageUrl] = useState();
+  const [imageUrl, setImageUrl] = useState("null");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [show, setShow] = useState(false);
-  const handleChangeStatus = ({ meta, file }, status) => {
-    console.log(status, meta, file);
-  };
 
   // receives array of files that are done uploading when submit button is clicked
   const handleSubmit = async (files) => {
     try {
       setLoading(true);
+      // define file
       const f = files[0];
       const img = f["file"];
+
+      // get presigned url
       const { data } = await API.getSignedUrl();
       const { key, uploadURL } = await data;
-      await console.log(uploadURL);
 
+      //upload image using presigned url
       const result = await API.uploadImage(uploadURL, img);
-      if (result.url) {
-        setSuccess(true);
-        setTimeout(function () {
-          setSuccess(false);
-        }, 4000);
-      } else {
-        setError(true);
-        setTimeout(function () {
-          setError(false);
-        }, 4000);
-      }
+
+      //set error based on returned url
+      await alert(result.url);
+
+      await setImageUrl(
+        `https://swell-clutch-react.s3.amazonaws.com/${key}.jpg`
+      );
     } catch (err) {
-      console.log(err);
+      alert();
+    }
+  };
+
+  const alert = (result) => {
+    if (result) {
+      setSuccess(true);
+      setTimeout(function () {
+        setSuccess(false);
+      }, 4000);
+    } else {
       setError(true);
+      setTimeout(function () {
+        setError(false);
+      }, 4000);
     }
   };
 
@@ -176,23 +186,15 @@ export default function CurrentSwellCont({ spot }) {
             <Col></Col>
             <Col md={6}>
               <div className="upload_cont">
-                <Alert
-                  variant="danger"
-                  className={
-                    error ? "fadeIn image-alert" : "fadeOut image-alert"
-                  }
-                ></Alert>
                 <Dropzone
                   maxFiles={1}
                   multiple={false}
                   inputContent="Upload An Image To Save"
-                  onChangeStatus={handleChangeStatus}
                   onSubmit={handleSubmit}
                   accept="image/*,audio/*,video/*"
                 />
-
                 <Alert
-                  variant="success"
+                  variant={error ? "danger" : "success"}
                   className={
                     success ? "fadeIn image-alert" : "fadeOut  image-alert"
                   }
@@ -206,6 +208,14 @@ export default function CurrentSwellCont({ spot }) {
         </Container>
       </Col>
       <Col></Col>
+      <Container className="current-swell__button-cont">
+        <SaveSwellBtn spot={spot} imageUrl={imageUrl} />
+        <Container className="d-flex justify-content-center">
+          <Button className="back-to-search-btn" href="/search">
+            Back to Search
+          </Button>
+        </Container>
+      </Container>
     </>
   );
 }

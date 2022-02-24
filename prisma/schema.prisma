@@ -49,6 +49,7 @@ model Session {
   occasional    Float?
   relation      String?
   waterTemp     String?
+  imageUrl      String?
   wind          Json?
   tide          Json?
   report        Json?

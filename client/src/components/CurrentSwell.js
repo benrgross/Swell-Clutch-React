@@ -14,14 +14,6 @@ function CurrentSwell({ data }) {
       <Row className="current-swell__cont">
         <CurrentSwellCont spot={spot} />
       </Row>
-      <Container className="current-swell__button-cont">
-        <SaveSwellBtn spot={spot} />
-        <Container className="d-flex justify-content-center">
-          <Button className="back-to-search-btn" href="/search">
-            Back to Search
-          </Button>
-        </Container>
-      </Container>
     </Container>
   );
 }

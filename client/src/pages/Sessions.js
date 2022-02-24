@@ -13,6 +13,9 @@ function Sessions() {
 
   useEffect(() => {
     return getSessionsOnLocation();
+    return () => {
+      setSessions([]); // This worked for me
+    };
   }, [id]); //eslint-disable-line
 
   const getSessionsOnLocation = async () => {
