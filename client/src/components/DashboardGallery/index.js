@@ -43,8 +43,8 @@ function DashboardGallery() {
   return (
     <>
       {!isAuthenticated ? (
-        <Container className="login-message d-flex justify-content-center">
-          <h4>Please Login To View Sessions</h4>
+        <Container className="login-message d-flex justify-content-center text-center">
+          <h3>Please Login To View And Add Sessions</h3>
         </Container>
       ) : (
         <>

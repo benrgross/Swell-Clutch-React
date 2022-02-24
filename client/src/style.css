@@ -81,6 +81,10 @@ a {
   font-size: 1.2rem;
 }
 
+.login-message {
+  margin-top: 4rem;
+}
+
 .spot__result-link:hover {
   color: #0070f3;
 }

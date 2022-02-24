@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import TideDirectionSesh from "../TideDirectionSesh";
 import RotateArrow from "../RotateArrow";
@@ -6,11 +5,11 @@ import SpotConditions from "../SpotConditions";
 import BuoySwells from "../BuoySwells";
 import ConvertTimeWithDate from "../ConvertTimeWithDate";
 import TimeDifference from "../TimeDifference";
+import { FcUpLeft } from "react-icons/fc";
 import "../CurrentSwellCont/currentSwell.css";
 import "./sessionCard.css";
 
 function SessionCard({ spot }) {
-  console.log("session card", spot);
   return (
     <>
       <Container className="session__card-cont rounded shadow-sm">
