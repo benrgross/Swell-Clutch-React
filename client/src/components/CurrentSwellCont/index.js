@@ -9,12 +9,13 @@ import SpotConditions from "../SpotConditions";
 import API from "../../utils /API";
 import "react-dropzone-uploader/dist/styles.css";
 import "./currentSwell.css";
-import Axios from "axios";
 
 export default function CurrentSwellCont({ spot }) {
   const [imageUrl, setImageUrl] = useState();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [show, setShow] = useState(false);
   const handleChangeStatus = ({ meta, file }, status) => {
     console.log(status, meta, file);
   };
@@ -30,7 +31,17 @@ export default function CurrentSwellCont({ spot }) {
       await console.log(uploadURL);
 
       const result = await API.uploadImage(uploadURL, img);
-      console.log(result);
+      if (result.url) {
+        setSuccess(true);
+        setTimeout(function () {
+          setSuccess(false);
+        }, 4000);
+      } else {
+        setError(true);
+        setTimeout(function () {
+          setError(false);
+        }, 4000);
+      }
     } catch (err) {
       console.log(err);
       setError(true);
@@ -165,6 +176,12 @@ export default function CurrentSwellCont({ spot }) {
             <Col></Col>
             <Col md={6}>
               <div className="upload_cont">
+                <Alert
+                  variant="danger"
+                  className={
+                    error ? "fadeIn image-alert" : "fadeOut image-alert"
+                  }
+                ></Alert>
                 <Dropzone
                   maxFiles={1}
                   multiple={false}
@@ -173,6 +190,15 @@ export default function CurrentSwellCont({ spot }) {
                   onSubmit={handleSubmit}
                   accept="image/*,audio/*,video/*"
                 />
+
+                <Alert
+                  variant="success"
+                  className={
+                    success ? "fadeIn image-alert" : "fadeOut  image-alert"
+                  }
+                >
+                  Image uploaded!
+                </Alert>
               </div>
             </Col>
             <Col></Col>

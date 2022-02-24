@@ -137,6 +137,19 @@
   left: 8.5rem;
 }
 
+.image-alert.alert {
+  margin-top: 1rem;
+  padding: 0.5rem 0.5rem !important;
+}
+.fadeOut {
+  opacity: 0;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+}
+.fadeIn {
+  opacity: 1;
+  transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
+}
+
 @media only screen and (max-width: 600px) {
   .current-swell__waveHeight-col {
     padding: 0.5rem 1rem 1rem 1rem;
@@ -153,7 +166,7 @@
   }
   .upload_cont {
     margin: auto;
-    margin-bottom: 2rem;
+
     margin-top: 1rem;
     width: 90%;
   }
