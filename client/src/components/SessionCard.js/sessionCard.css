@@ -8,6 +8,15 @@
   margin-left: 0px !important;
 }
 
+.view-image__btn-cont {
+  padding: 1rem;
+  color: rgb(0, 88, 176);
+}
+
+.view-image__btn {
+  background-color: rgb(25, 123, 222);
+}
+
 @media only screen and (max-width: 600px) {
   .session__card-col {
     margin-left: 0px !important;

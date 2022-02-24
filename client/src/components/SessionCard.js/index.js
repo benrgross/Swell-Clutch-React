@@ -1,5 +1,5 @@
-import React from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import { useState } from "react";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import TideDirectionSesh from "../TideDirectionSesh";
 import RotateArrow from "../RotateArrow";
 import SpotConditions from "../SpotConditions";
@@ -16,11 +16,11 @@ function SessionCard({ spot }) {
       <Container className="session__card-cont rounded shadow-sm">
         <Row>
           <div className="d-flex justify-content-center current-swell__report-header-cont">
-            <h4 className="current-swell__report-header text-center">
+            <h5 className="current-swell__report-header text-center">
               <ConvertTimeWithDate
                 timestamp={spot.timeStamp}
               ></ConvertTimeWithDate>
-            </h4>
+            </h5>
           </div>
         </Row>
         <Row>

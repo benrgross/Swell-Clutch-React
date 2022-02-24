@@ -8,6 +8,7 @@ import Dropzone from "react-dropzone-uploader";
 import SpotConditions from "../SpotConditions";
 import API from "../../utils /API";
 import SaveSwellBtn from "../SaveSwellBtn";
+import Loader from "../Loader.js";
 import "react-dropzone-uploader/dist/styles.css";
 import "./currentSwell.css";
 
@@ -16,7 +17,6 @@ export default function CurrentSwellCont({ spot }) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [show, setShow] = useState(false);
 
   // receives array of files that are done uploading when submit button is clicked
   const handleSubmit = async (files) => {
@@ -28,17 +28,16 @@ export default function CurrentSwellCont({ spot }) {
 
       // get presigned url
       const { data } = await API.getSignedUrl();
-      const { key, uploadURL } = await data;
+      const { Key, uploadURL } = await data;
+      console.log(Key);
 
       //upload image using presigned url
       const result = await API.uploadImage(uploadURL, img);
 
-      //set error based on returned url
+      //set alert based on returned url
       await alert(result.url);
 
-      await setImageUrl(
-        `https://swell-clutch-react.s3.amazonaws.com/${key}.jpg`
-      );
+      await setImageUrl(`https://swell-clutch-react.s3.amazonaws.com/${Key}`);
     } catch (err) {
       alert();
     }
@@ -46,11 +45,13 @@ export default function CurrentSwellCont({ spot }) {
 
   const alert = (result) => {
     if (result) {
+      setLoading(false);
       setSuccess(true);
       setTimeout(function () {
         setSuccess(false);
       }, 4000);
     } else {
+      setLoading(false);
       setError(true);
       setTimeout(function () {
         setError(false);
@@ -186,13 +187,18 @@ export default function CurrentSwellCont({ spot }) {
             <Col></Col>
             <Col md={6}>
               <div className="upload_cont">
-                <Dropzone
-                  maxFiles={1}
-                  multiple={false}
-                  inputContent="Upload An Image To Save"
-                  onSubmit={handleSubmit}
-                  accept="image/*,audio/*,video/*"
-                />
+                {loading ? (
+                  <Loader />
+                ) : (
+                  <Dropzone
+                    maxFiles={1}
+                    multiple={false}
+                    inputContent="Upload An Image To Save"
+                    onSubmit={handleSubmit}
+                    accept="image/*,audio/*,video/*"
+                  />
+                )}
+
                 <Alert
                   variant={error ? "danger" : "success"}
                   className={

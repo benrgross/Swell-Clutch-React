@@ -12,9 +12,9 @@ function Sessions() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    return getSessionsOnLocation();
-    return () => {
-      setSessions([]); // This worked for me
+    getSessionsOnLocation();
+    return (set) => {
+      setSessions([]);
     };
   }, [id]); //eslint-disable-line
 

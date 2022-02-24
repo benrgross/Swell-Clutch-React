@@ -1,3 +1,11 @@
+.session__gallery-cont-blur {
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+  z-index: -1;
+}
+.session__gallery-cont {
+}
+
 .session__gallery-header {
   color: rgb(0, 112, 243);
   font-weight: 900;
@@ -8,21 +16,61 @@
 }
 
 .session__report-btn {
-  width: 25%;
-  opacity: 0.9;
+  width: 23%;
+  opacity: 0.8;
   position: relative;
-  top: 2.5rem;
+  top: 2rem;
+  padding: 2px !important;
 }
 
 .session__gallery-div {
   width: 50%;
 }
 
+.view-image__btn-cont {
+  padding: 1rem;
+  position: relative;
+  bottom: 3.2rem;
+  right: 17rem;
+}
+
+.view-image__btn {
+  padding: 2px !important;
+  border-color: #0e65afeb !important;
+  height: 35px;
+  opacity: 0.8;
+  background-color: rgb(25, 123, 222);
+}
+
+.view-image__btn-map {
+  position: relative;
+  bottom: 2.2rem;
+  left: 0.1rem;
+}
+
 @media only screen and (max-width: 600px) {
   .session__report-btn {
     width: 100%;
-
     position: relative;
-    top: 39.1rem;
+    top: 35.1rem;
+  }
+
+  .view-image__btn-cont {
+    padding: 1rem;
+    position: relative;
+    bottom: 0.5rem;
+    right: 0rem;
+  }
+
+  .view-image__btn {
+    width: 100%;
+  }
+
+  .view-image__btn-map {
+    padding: 1rem;
+    width: 100%;
+    position: relative;
+    bottom: -2rem;
+    left: 0.1rem;
   }
 }

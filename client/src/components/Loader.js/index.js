@@ -3,14 +3,12 @@ import "./loader.css";
 
 function Loader() {
   return (
-    <Container fluid className="loader__cont d-flex justify-content-center">
-      <Row>
-        <Col></Col>
-        <Col md={4}>
-          <div className="loader"></div>
-        </Col>
-        <Col></Col>
-      </Row>
+    <Container className="loader__cont d-flex justify-content-center">
+      <Col></Col>
+      <Col md={4} className="d-flex justify-content-center">
+        <div className="loader"></div>
+      </Col>
+      <Col></Col>
     </Container>
   );
 }
