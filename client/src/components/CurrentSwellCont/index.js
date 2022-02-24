@@ -1,22 +1,40 @@
-import { Row, Col, Container } from "react-bootstrap";
+import { useState } from "react";
+import { Row, Col, Container, Alert } from "react-bootstrap";
 import TideDirection from "../TideDirection";
 import RotateArrow from "../RotateArrow";
 import ConvertTimeStamp from "../ConvertTimeStamp";
 import BuoySwells from "../BuoySwells";
 import Dropzone from "react-dropzone-uploader";
-import ImageUploader from "../ImageUploader";
 import SpotConditions from "../SpotConditions";
+import API from "../../utils /API";
 import "react-dropzone-uploader/dist/styles.css";
 import "./currentSwell.css";
+import Axios from "axios";
 
 export default function CurrentSwellCont({ spot }) {
+  const [imageUrl, setImageUrl] = useState();
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleChangeStatus = ({ meta, file }, status) => {
     console.log(status, meta, file);
   };
 
   // receives array of files that are done uploading when submit button is clicked
-  const handleSubmit = (files) => {
-    console.log(files.map((f) => f.meta));
+  const handleSubmit = async (files) => {
+    try {
+      setLoading(true);
+      const f = files[0];
+      const img = f["file"];
+      const { data } = await API.getSignedUrl();
+      const { key, uploadURL } = await data;
+      await console.log(uploadURL);
+
+      const result = await API.uploadImage(uploadURL, img);
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+      setError(true);
+    }
   };
 
   return (

@@ -127,6 +127,16 @@
   cursor: pointer;
 } */
 
+.dzu-previewImage {
+  -moz-transform: scale(2.5);
+  -ms-transform: scale(2.5);
+  -o-transform: scale(2.5);
+  -webkit-transform: scale(2.5);
+  transform: scale(2.5);
+  position: relative;
+  left: 8.5rem;
+}
+
 @media only screen and (max-width: 600px) {
   .current-swell__waveHeight-col {
     padding: 0.5rem 1rem 1rem 1rem;
