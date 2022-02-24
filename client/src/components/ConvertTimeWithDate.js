@@ -2,9 +2,10 @@ import React from "react";
 import moment from "moment";
 
 function ConvertTimeWithDate({ timestamp }) {
-  let t = moment.unix(timestamp).format(`MM/DD/YY @ h:mm a`);
+  let t = moment.unix(timestamp).format(`M/DD/YY @ h:mm a`);
+  t.replace(/@/g, "at");
 
-  return <span>{t}</span>;
+  return <span>Session on {t.replace(/@/g, "at")}</span>;
 }
 
 export default ConvertTimeWithDate;

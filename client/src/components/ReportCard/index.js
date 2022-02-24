@@ -2,6 +2,7 @@ import React from "react";
 import TideDirection from "../TideDirection";
 import RotateArrow from "../RotateArrow";
 import ConvertTimeStamp from "../ConvertTimeStamp";
+import SpotConditions from "../SpotConditions";
 import BuoySwells from "../BuoySwells";
 import { Row, Col, Container } from "react-bootstrap";
 
@@ -19,7 +20,9 @@ function ReportCard({ report }) {
         </Row>
         <Row>
           <div className="d-flex justify-content-center">
-            <h6>{spot.conditions.value}</h6>
+            <h6>
+              <SpotConditions conditions={spot.conditions.value} />
+            </h6>
           </div>
         </Row>
         <Row>

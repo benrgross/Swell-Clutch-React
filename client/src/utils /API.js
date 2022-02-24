@@ -16,4 +16,21 @@ export default {
   getSessions: function (id) {
     return axios.get(`/api/session/spot/${id}`);
   },
+
+  getSignedUrl: function () {
+    console.log("hello");
+    return axios.get(
+      "https://t0ihe9e020.execute-api.us-east-1.amazonaws.com/default/getPresignedImageUrl"
+    );
+  },
+
+  uploadImage: function (uploadURL, img) {
+    return fetch(uploadURL, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "image/jpeg",
+      },
+      body: img,
+    });
+  },
 };

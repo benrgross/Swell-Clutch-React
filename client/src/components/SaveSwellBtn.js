@@ -4,17 +4,20 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useHistory } from "react-router-dom";
 
-function SaveSwellBtn({ spot }) {
+function SaveSwellBtn({ spot, imageUrl }) {
   const { user } = useAuth0();
   const history = useHistory();
 
   const saveSwell = async () => {
+    console.log(imageUrl);
     console.log(user);
     const body = {
       spot: spot,
       account: user,
+      imageUrl: imageUrl,
     };
     const { data } = await axios.post("/api/session/saveSwell", body);
+    console.log(data);
     history.push("/");
   };
   return (

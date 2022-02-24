@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: "Libre Baskerville", serif;
   font-family: "Rubik", sans-serif;
-  background-color: #ebf4f94a;
+  background-color: rgba(245, 241, 241, 0.612);
 }
 
 a {
@@ -243,7 +243,6 @@ a {
 }
 
 #search__cont {
-  height: 1000px;
   background-color: rgba(245, 241, 241, 0.612);
 }
 

@@ -102,6 +102,8 @@ module.exports = {
   createSwell: async function (req, res) {
     const { spot } = req.body;
     const { account } = req.body;
+    const { imageUrl } = req.body;
+    console.log(imageUrl);
 
     try {
       const user = await prisma.user.upsert({
@@ -147,6 +149,7 @@ module.exports = {
               occasional: spot.waveHeight.occasional || 0,
               relation: spot.waveHeight.humanRelation,
               userEmail: account.email,
+              imageUrl: imageUrl,
               waterTemp: `${spot.waterTemp.min} - ${spot.waterTemp.max}`,
               conditions: {
                 human: spot.conditions.human,
@@ -195,6 +198,7 @@ module.exports = {
               surfMin: spot.waveHeight.min,
               occasional: spot.waveHeight.occasional || 0,
               relation: spot.waveHeight.humanRelation,
+              imageUrl: imageUrl,
               userEmail: account.email,
               waterTemp: `${spot.waterTemp.min} - ${spot.waterTemp.max}`,
               conditions: {
