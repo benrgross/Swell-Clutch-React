@@ -19,19 +19,6 @@ module.exports = {
       );
       await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
 
-      const nameArray = await page.evaluate(() =>
-        [
-          ...document
-            .querySelector("#surf-spots")
-            .querySelectorAll(".SearchResults_resultName__zRhYX"),
-        ].map((elem) => elem.innerText)
-      );
-
-      const names = nameArray.map((elem) => {
-        return {
-          name: elem,
-        };
-      });
       const hrefs = await page.evaluate(() =>
         [
           ...document
