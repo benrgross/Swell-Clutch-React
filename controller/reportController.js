@@ -1,11 +1,9 @@
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const axios = require("axios");
-const cheerio = require("cheerio");
 
 module.exports = {
   searchSpots: async function (req, res) {
     try {
-      let results = [];
       const browser = await puppeteer.launch({
         headless: true,
         args: [
@@ -21,24 +19,58 @@ module.exports = {
       );
       await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
 
-      const html = await page.content();
+      const nameArray = await page.evaluate(() =>
+        [
+          ...document
+            .querySelector("#surf-spots")
+            .querySelectorAll(".SearchResults_resultName__zRhYX"),
+        ].map((elem) => elem.innerText)
+      );
 
-      const $ = cheerio.load(html);
+      const names = nameArray.map((elem) => {
+        return {
+          name: elem,
+        };
+      });
+      const hrefs = await page.evaluate(() =>
+        [
+          ...document
+            .querySelector("#surf-spots")
+            .querySelectorAll(".SearchResults_resultLink__xhEnG"),
+        ].map((elem) => elem.getAttribute("href"))
+      );
 
-      $("#surf-spots > div > div").each((i, element) => {
-        let href = $(element).children("a").attr("href");
-        let spotId = href.split("/")[5];
-        let nameFromRef = href.split("/");
+      const results = hrefs.map((elem) => {
+        let nameFromRef = elem.split("/");
         let name = nameFromRef[4].split("-").join(" ");
 
-        const spot = {
+        return {
+          spotId: elem.split("/")[5],
+          href: elem,
           name: name,
-          spotId: spotId,
-          href: href,
         };
-
-        results.push(spot);
       });
+
+      //   let results = names.map((item, i) => Object.assign({}, item, hrefs[i]));
+
+      //   const html = await page.content();
+
+      //   const $ = cheerio.load(html);
+
+      //   $("#surf-spots > div > div").each((i, element) => {
+      //     let href = $(element).children("a").attr("href");
+      //     let spotId = href.split("/")[5];
+      //     let nameFromRef = href.split("/");
+      //     let name = nameFromRef[4].split("-").join(" ");
+
+      //     const spot = {
+      //       name: name,
+      //       spotId: spotId,
+      //       href: href,
+      //     };
+
+      //     results.push(spot);
+      //   });
 
       await browser.close();
 
