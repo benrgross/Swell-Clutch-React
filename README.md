@@ -65,7 +65,7 @@ If you have any questions, please contact benrgross at benrgross@gmail.
 
 MIT License
 
-Copyright (c) 2021 Ben Gross, Loreto Delgado, James Galantino
+Copyright (c) 2021 Ben Gross
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
