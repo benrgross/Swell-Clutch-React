@@ -18,7 +18,7 @@ function SessionCard({ spot }) {
     try {
       const { data } = await API.deleteSession(id);
 
-      history.push(`session/${spot.spotId}`);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
