@@ -19,7 +19,7 @@ module.exports = {
       );
       await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
 
-      const hrefs = await page.evaluate(() =>
+      const href = await page.evaluate(() =>
         [
           ...document
             .querySelector("#surf-spots")
@@ -27,7 +27,7 @@ module.exports = {
         ].map((elem) => elem.getAttribute("href"))
       );
 
-      const results = hrefs.map((elem) => {
+      const results = href.map((elem) => {
         let nameFromRef = elem.split("/");
         let name = nameFromRef[4].split("-").join(" ");
 

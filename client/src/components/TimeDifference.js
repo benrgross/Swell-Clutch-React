@@ -13,7 +13,7 @@ function TimeDifference({ timestamp, nextTimestamp }) {
   let hours = Math.floor((difference / hour) % 24);
   let minutes = Math.floor((difference / minute) % 60);
 
-  const results = hours + "hrs" + " " + minutes + "min";
+  const results = hours + "hrs " + minutes + "min";
 
   return <span>{results}</span>;
 }

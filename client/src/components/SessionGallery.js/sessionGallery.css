@@ -47,9 +47,10 @@
 
 .view-image__btn-cont {
   padding: 1rem;
+  width: 100%;
   position: relative;
   bottom: 3.2rem;
-  right: 17rem;
+  right: 14rem;
 }
 
 .view-image__btn {
@@ -64,7 +65,7 @@
 .view-image__btn-map {
   position: relative;
   bottom: 2.2rem;
-  left: 0rem;
+  left: 1rem;
 }
 
 .back-btn {
@@ -81,7 +82,7 @@
   .session__report-btn {
     width: 100%;
     position: relative;
-    top: 38.1rem;
+    top: 40.1rem;
     padding: 3px !important;
   }
 
@@ -90,19 +91,22 @@
     position: relative;
     display: flex;
     justify-self: center;
-    bottom: 3rem;
-    right: 0rem;
+    bottom: 2rem;
+    right: 1rem;
   }
 
   .view-image__btn {
     width: 100%;
+    position: relative;
+    bottom: -2rem;
+    left: 1rem;
   }
 
   .view-image__btn.view-image__btn-map {
     padding: 1rem;
     width: 100%;
     position: relative;
-    bottom: -3rem;
+    bottom: -4rem;
     right: 4rem;
   }
   .back-btn {
@@ -131,5 +135,11 @@
     margin-bottom: 0rem;
     text-shadow: #000 0px 0px 1px;
     -webkit-font-smoothing: antialiased;
+  }
+
+  .back-btn {
+    position: relative;
+    top: -6rem;
+    cursor: pointer;
   }
 }

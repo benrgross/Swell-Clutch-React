@@ -89,13 +89,15 @@ function SessionGallery({ sessions, name, report }) {
                 <SessionCard spot={session} />
                 <>
                   {session.imageUrl.includes("http") ? (
-                    <Button
-                      onClick={(e) => openImage(e)}
-                      data-image-url={session.imageUrl}
-                      className="view-image__btn view-image__btn-map"
-                    >
-                      View Image
-                    </Button>
+                    <div className="view-image__btn-cont d-flex justify-content-center">
+                      <Button
+                        onClick={(e) => openImage(e)}
+                        data-image-url={session.imageUrl}
+                        className="view-image__btn view-image__btn-map"
+                      >
+                        View Image
+                      </Button>
+                    </div>
                   ) : (
                     ""
                   )}

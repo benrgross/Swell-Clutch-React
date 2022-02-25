@@ -8,17 +8,21 @@ function SaveSwellBtn({ spot, imageUrl }) {
   const { user } = useAuth0();
   const history = useHistory();
 
+  // Save Swell Function After Search
   const saveSwell = async () => {
-    console.log(imageUrl);
-    console.log(user);
-    const body = {
-      spot: spot,
-      account: user,
-      imageUrl: imageUrl,
-    };
-    const { data } = await axios.post("/api/session/saveSwell", body);
-    console.log(data);
-    history.push("/");
+    try {
+      const body = {
+        spot: spot,
+        account: user,
+        imageUrl: imageUrl,
+      };
+      const { data } = await axios.post("/api/session/saveSwell", body);
+
+      history.push("/");
+    } catch (err) {
+      console.log(err);
+      history.push("/search");
+    }
   };
   return (
     <Row>

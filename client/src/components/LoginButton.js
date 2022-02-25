@@ -12,7 +12,6 @@ function LoginButton() {
       name: user.name,
     };
     const { data } = await API.upsertUser(creds);
-    console.log(data);
   };
 
   return <div onClick={() => logInWithDB()}>Login</div>;

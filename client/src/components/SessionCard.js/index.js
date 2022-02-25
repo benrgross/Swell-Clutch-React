@@ -6,13 +6,11 @@ import BuoySwells from "../BuoySwells";
 import ConvertTimeWithDate from "../ConvertTimeWithDate";
 import TimeDifference from "../TimeDifference";
 import API from "../../utils /API";
-import { useHistory } from "react-router-dom";
 import "../CurrentSwellCont/currentSwell.css";
 import "./sessionCard.css";
 import "../SessionGallery.js/sessionGallery.css";
 
 function SessionCard({ spot }) {
-  const history = useHistory();
   const deleteSession = async (e) => {
     const id = e.target.getAttribute("data-id");
     try {

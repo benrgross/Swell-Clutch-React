@@ -1,5 +1,4 @@
 import Dashboard from "./pages/Dashboard";
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
 import Search from "./pages/Search";

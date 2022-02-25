@@ -1,8 +1,7 @@
 import React from "react";
-import { Button, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import SpotHeader from "./SpotHeader";
 import CurrentSwellCont from "./CurrentSwellCont";
-import SaveSwellBtn from "./SaveSwellBtn";
 import "./CurrentSwellCont/currentSwell.css";
 
 function CurrentSwell({ data }) {

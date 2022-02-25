@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../../utils /API";
-import { Container } from "react-bootstrap";
+import { Container, Alert } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import DashboardThumb from "../DashboardThumb";
 import "./dashboardGallery.css";
@@ -17,6 +17,7 @@ function DashboardGallery() {
   }, [isAuthenticated]); //eslint-disable-line
 
   const getSessions = async () => {
+    setError(false);
     try {
       const { email } = await user;
       let { data } = await API.getSessionsOnUser(email);
@@ -56,6 +57,13 @@ function DashboardGallery() {
         </Container>
       ) : (
         <>
+          {error ? (
+            <Alert variant="danger">
+              Something went wrong, please try again
+            </Alert>
+          ) : (
+            ""
+          )}
           {sessions.map((session) => (
             <DashboardThumb
               key={session.id}
