@@ -1,6 +1,7 @@
 .login-message {
-  margin-top: 4rem;
-  margin-bottom: 10rem;
+  margin-top: 5rem !important;
+  margin-bottom: 0rem;
+  font-size: 40px !important;
 }
 
 .dash__gallery-cont {

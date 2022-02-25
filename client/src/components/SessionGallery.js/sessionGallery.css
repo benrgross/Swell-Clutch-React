@@ -1,28 +1,135 @@
+.session__gallery-cont-blur {
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+  z-index: -1;
+}
+.session__gallery-cont {
+}
+
 .session__gallery-header {
   color: rgb(0, 112, 243);
   font-weight: 900;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
   text-shadow: #000 0px 0px 1px;
   -webkit-font-smoothing: antialiased;
 }
 
-.session__report-btn {
-  width: 25%;
-  opacity: 0.9;
+.session__image-cont {
+  margin: auto;
+  z-index: 2;
   position: relative;
-  top: 2.5rem;
+  bottom: 37rem;
+}
+
+.session__image {
+  width: 50%;
+}
+
+.image__back-btn {
+  position: relative;
+  top: 1rem;
+  left: 3rem;
+  cursor: pointer;
+}
+.session__report-btn {
+  width: 100%;
+  opacity: 0.8;
+  position: relative;
+  top: 0.5rem;
+  padding: 2px !important;
+  border-radius: 0rem !important;
 }
 
 .session__gallery-div {
   width: 50%;
 }
 
+.view-image__btn-cont {
+  padding: 1rem;
+  position: relative;
+  bottom: 3.2rem;
+  right: 17rem;
+}
+
+.view-image__btn {
+  padding: 2px !important;
+  border-color: #0e65afeb !important;
+  height: 35px;
+  opacity: 0.8;
+  background-color: rgb(25, 123, 222);
+  border-radius: 0rem !important;
+}
+
+.view-image__btn-map {
+  position: relative;
+  bottom: 2.2rem;
+  left: 0rem;
+}
+
+.back-btn {
+  position: relative;
+  top: -8rem;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  opacity: 0.6;
+}
+
 @media only screen and (max-width: 600px) {
   .session__report-btn {
     width: 100%;
-
     position: relative;
-    top: 39.1rem;
+    top: 38.1rem;
+    padding: 3px !important;
+  }
+
+  .view-image__btn-cont {
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    justify-self: center;
+    bottom: 3rem;
+    right: 0rem;
+  }
+
+  .view-image__btn {
+    width: 100%;
+  }
+
+  .view-image__btn.view-image__btn-map {
+    padding: 1rem;
+    width: 100%;
+    position: relative;
+    bottom: -3rem;
+    right: 4rem;
+  }
+  .back-btn {
+    position: relative;
+    top: -8rem;
+    z-index: 2;
+  }
+
+  .session__image {
+    width: 100%;
+    position: relative;
+    right: 1.2rem;
+  }
+  .image__back-btn {
+    position: relative;
+    top: 0.5rem;
+    left: 1.5rem;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .session__gallery-header {
+    color: rgb(0, 112, 243);
+    font-weight: 900;
+    margin-top: 5rem;
+    margin-bottom: 0rem;
+    text-shadow: #000 0px 0px 1px;
+    -webkit-font-smoothing: antialiased;
   }
 }

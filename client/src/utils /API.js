@@ -10,6 +10,10 @@ export default {
     return axios.post(`/api/session/delete`, { id: spotId });
   },
 
+  deleteSession: function (id) {
+    return axios.get(`/api/session/delete/sesh/${id}`);
+  },
+
   getReport: function (spotId) {
     return axios.get(`/api/surf/report/${spotId}`);
   },
@@ -17,8 +21,15 @@ export default {
     return axios.get(`/api/session/spot/${id}`);
   },
 
+  getSessionsOnUser: function (email) {
+    return axios.get(`/api/session/${email}`);
+  },
+
+  searchSpots: function (name) {
+    return axios.get(`api/surf/search/${name}`);
+  },
+
   getSignedUrl: function () {
-    console.log("hello");
     return axios.get(
       "https://t0ihe9e020.execute-api.us-east-1.amazonaws.com/default/getPresignedImageUrl"
     );

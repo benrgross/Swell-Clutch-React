@@ -1,11 +1,36 @@
 .session__card-cont {
   width: 100% !important;
   background-color: white;
-  cursor: pointer;
 }
 
 .session__card-col {
   margin-left: 0px !important;
+}
+
+.view-image__btn-cont {
+  padding: 1rem;
+  color: rgb(0, 88, 176);
+}
+
+.view-image__btn {
+  background-color: rgb(25, 123, 222);
+  position: relative;
+  left: -0rem;
+}
+
+.session__delete-btn {
+  position: relative;
+  top: 1rem;
+  left: -1rem;
+  opacity: 0.4;
+  color: red !important;
+  background-color: white !important;
+}
+
+.session__delete-btn:hover {
+  color: white !important;
+  background-color: red !important;
+  opacity: 0.9;
 }
 
 @media only screen and (max-width: 600px) {
@@ -16,5 +41,13 @@
 
   .current-swell__report-col {
     padding: 0.1rem !important;
+  }
+
+  .session__delete-btn {
+    position: relative;
+    top: 0.5rem;
+    left: -1.3rem;
+    opacity: 0.8;
+    padding: 0.4rem !important;
   }
 }

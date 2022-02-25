@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import Header from "../components/Header";
 import DashboardGallery from "../components/DashboardGallery";
 import { useAuth0 } from "@auth0/auth0-react";

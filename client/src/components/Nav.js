@@ -1,5 +1,6 @@
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
+import { GiBigWave } from "react-icons/gi";
 
 function Navigation() {
   const { loginWithRedirect, logout, user } = useAuth0();
@@ -7,8 +8,11 @@ function Navigation() {
   return (
     <Navbar style={{ backgroundColor: "rgb(4 148 250 / 2%)" }} expand="lg">
       <Container>
-        <Navbar.Brand style={{ color: "#0070f3" }} href="/">
-          Swell Clutch
+        <Navbar.Brand
+          style={{ color: "#0070f3", marginRight: "3rem" }}
+          href="/"
+        >
+          <GiBigWave size={45} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
