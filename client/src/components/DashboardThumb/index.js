@@ -6,11 +6,13 @@ import "./dashboardThumb.css";
 
 function DashboardThumb({ spot }) {
   let history = useHistory();
-  const getSessions = async (e) => {
+
+  const getSessions = (e) => {
     const spotId = e.target.getAttribute("data-spot-id");
 
     history.push(`/sessions/${spotId}`);
   };
+
   return (
     <Col md={6} sm={12}>
       <DeleteSpotBtn spotId={spot.spot_id} />

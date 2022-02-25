@@ -8,7 +8,10 @@ function Navigation() {
   return (
     <Navbar style={{ backgroundColor: "rgb(4 148 250 / 2%)" }} expand="lg">
       <Container>
-        <Navbar.Brand style={{ color: "#0070f3" }} href="/">
+        <Navbar.Brand
+          style={{ color: "#0070f3", marginRight: "3rem" }}
+          href="/"
+        >
           <GiBigWave size={45} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

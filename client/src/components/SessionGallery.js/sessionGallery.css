@@ -9,8 +9,8 @@
 .session__gallery-header {
   color: rgb(0, 112, 243);
   font-weight: 900;
-  margin-top: 4rem;
-  margin-bottom: 0rem;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
   text-shadow: #000 0px 0px 1px;
   -webkit-font-smoothing: antialiased;
 }
@@ -33,10 +33,10 @@
   cursor: pointer;
 }
 .session__report-btn {
-  width: 23%;
+  width: 100%;
   opacity: 0.8;
   position: relative;
-  top: 1.9rem;
+  top: 0.5rem;
   padding: 2px !important;
   border-radius: 0rem !important;
 }
@@ -64,25 +64,33 @@
 .view-image__btn-map {
   position: relative;
   bottom: 2.2rem;
-  left: 0.1rem;
+  left: 0rem;
 }
 
 .back-btn {
   position: relative;
-  top: -5rem;
+  top: -8rem;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  opacity: 0.6;
 }
 
 @media only screen and (max-width: 600px) {
   .session__report-btn {
     width: 100%;
     position: relative;
-    top: 35.1rem;
+    top: 38.1rem;
+    padding: 3px !important;
   }
 
   .view-image__btn-cont {
     padding: 1rem;
     position: relative;
-    bottom: 0.5rem;
+    display: flex;
+    justify-self: center;
+    bottom: 3rem;
     right: 0rem;
   }
 
@@ -90,15 +98,38 @@
     width: 100%;
   }
 
-  .view-image__btn-map {
+  .view-image__btn.view-image__btn-map {
     padding: 1rem;
     width: 100%;
     position: relative;
-    bottom: -2rem;
-    left: 0.1rem;
+    bottom: -3rem;
+    right: 4rem;
   }
   .back-btn {
     position: relative;
-    top: -7rem;
+    top: -8rem;
+    z-index: 2;
+  }
+
+  .session__image {
+    width: 100%;
+    position: relative;
+    right: 1.2rem;
+  }
+  .image__back-btn {
+    position: relative;
+    top: 0.5rem;
+    left: 1.5rem;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .session__gallery-header {
+    color: rgb(0, 112, 243);
+    font-weight: 900;
+    margin-top: 5rem;
+    margin-bottom: 0rem;
+    text-shadow: #000 0px 0px 1px;
+    -webkit-font-smoothing: antialiased;
   }
 }

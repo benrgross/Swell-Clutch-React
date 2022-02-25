@@ -4,6 +4,7 @@ import SessionCard from "../SessionCard.js";
 import { useHistory, useParams } from "react-router-dom";
 import { FcUpLeft } from "react-icons/fc";
 import ReportCard from "../ReportCard/index.js";
+
 import "./sessionGallery.css";
 
 function SessionGallery({ sessions, name, report }) {
@@ -23,6 +24,7 @@ function SessionGallery({ sessions, name, report }) {
   };
 
   const goBack = () => {
+    // test it the id is only digits
     if (!/\D/.test(id)) {
       history.push(sessions[0].spotId);
     } else history.push("/");
@@ -35,7 +37,7 @@ function SessionGallery({ sessions, name, report }) {
           viewImage ? "session__gallery-cont-blur" : "session__gallery"
         }
       >
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center text-center">
           <h1 className="session__gallery-header">Sessions At {name}</h1>
         </div>
 
@@ -71,7 +73,12 @@ function SessionGallery({ sessions, name, report }) {
         ) : (
           <Row>
             {sessions.map((session) => (
-              <Col md={6} sm={12} className="session__card-col">
+              <Col
+                md={6}
+                sm={12}
+                key={session.id}
+                className="session__card-col"
+              >
                 <Button
                   onClick={(e) => getReport(e)}
                   data-id={session.id}
@@ -102,7 +109,7 @@ function SessionGallery({ sessions, name, report }) {
         {viewImage ? (
           <Row>
             <Col>
-              <Container fluid className="d-flex justify-content-center">
+              <Container className="d-flex justify-content-center">
                 <span
                   onClick={() => setViewImage(false)}
                   className="image__back-btn"

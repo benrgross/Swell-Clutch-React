@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import axios from "axios";
+import { Col, Row, Alert } from "react-bootstrap";
 import CurrentSwell from "../CurrentSwell";
+import API from "../../utils /API";
+import Loader from "../Loader.js";
 import "./spotResults.css";
 
 function SearchSpotResults({ data }) {
@@ -10,16 +11,12 @@ function SearchSpotResults({ data }) {
   const [error, setError] = useState(false);
 
   const getSwell = async (e) => {
-    console.log(e.target.getAttribute("data-spotid"));
     e.preventDefault();
     setLoading(true);
     setError(false);
     try {
-      const data = await axios.get(
-        `/api/surf/report/${e.target.getAttribute("data-spotid")}`
-      );
-
-      console.log(data);
+      const spotId = await e.target.getAttribute("data-spot-id");
+      const data = await API.getReport(spotId);
 
       setSwell(data.data);
 
@@ -31,34 +28,44 @@ function SearchSpotResults({ data }) {
   };
   return (
     <>
-      {swell.length < 1 ? (
-        <Row>
-          <Col></Col>
-          <Col sm={12} md={6} className="spot__results-col">
-            {" "}
-            {data ? (
-              data.map((spot, i) => {
-                return (
-                  <p
-                    onClick={getSwell}
-                    className="spot__result-link shadow-sm rounded"
-                    key={i}
-                    data-spotid={spot.spotId}
-                    data-api={spot.href}
-                  >
-                    {spot.name}
-                  </p>
-                );
-              })
-            ) : (
-              <p>search a spot to get started </p>
-            )}
-          </Col>
-          <Col></Col>
-        </Row>
+      {error ? (
+        <Alert variant="danger">
+          Like something went wrong. Try another spot.
+        </Alert>
       ) : (
-        <CurrentSwell data={swell} />
+        ""
       )}
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          {swell.length < 1 ? (
+            <Row>
+              <Col></Col>
+              <Col sm={12} md={6} className="spot__results-col">
+                {data
+                  ? data.map((spot, i) => {
+                      return (
+                        <p
+                          onClick={getSwell}
+                          className="spot__result-link shadow-sm rounded"
+                          key={i}
+                          data-spot-id={spot.spotId}
+                          data-api={spot.href}
+                        >
+                          {spot.name}
+                        </p>
+                      );
+                    })
+                  : ""}
+              </Col>
+              <Col></Col>
+            </Row>
+          ) : (
+            <CurrentSwell data={swell} />
+          )}
+        </>
+      )}{" "}
     </>
   );
 }

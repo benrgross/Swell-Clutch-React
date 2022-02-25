@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
-import axios from "axios";
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
+
+import { Container, Form, Button, Row, Col, Alert } from "react-bootstrap";
 import Results from "../Results";
+import API from "../../utils /API";
 import "./search.css";
 
 function SearchSpot() {
@@ -19,15 +20,12 @@ function SearchSpot() {
     setSearch(false);
 
     try {
-      const { data } = await axios.get(
-        `/api/surf/search/${spotName.current.value}`
-      );
+      const name = await spotName.current.value;
+      const { data } = await API.searchSpots(name);
       console.log("data", data);
       setLoading(false);
 
-      if (data === {}) {
-        setError(true);
-      } else setSpot(data);
+      setSpot(data);
       setSearch(false);
       setError(false);
     } catch (error) {
@@ -38,6 +36,11 @@ function SearchSpot() {
   };
   return (
     <div>
+      {error ? (
+        <Alert variant="danger">Something went wrong, please try again</Alert>
+      ) : (
+        ""
+      )}
       {viewSearch ? (
         <Row>
           <Col></Col>
@@ -73,7 +76,6 @@ function SearchSpot() {
       ) : (
         ""
       )}
-
       <Results loading={loading} data={spot} />
     </div>
   );

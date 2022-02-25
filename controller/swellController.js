@@ -68,16 +68,18 @@ module.exports = {
   },
 
   deleteSession: async function (req, res) {
-    const { id } = req.params.id;
+    const { id } = req.params;
+
     try {
       const session = await prisma.session.delete({
         where: {
-          id: id,
+          id: Number(id),
         },
       });
 
-      res.status(200).send([...session]);
+      res.status(200).send(session);
     } catch (err) {
+      console.log(err);
       res.status(400).send(err);
     }
   },

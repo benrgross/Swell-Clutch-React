@@ -108,7 +108,8 @@
   height: 15rem;
 }
 
-.dzu-inputLabel {
+.dzu-dropzone {
+  text-align: center;
 }
 
 /* .dzu-inputLabel::after {
@@ -134,7 +135,7 @@
   -webkit-transform: scale(2.5);
   transform: scale(2.5);
   position: relative;
-  left: 8.5rem;
+  left: 4.5rem;
 }
 
 .image-alert.alert {
@@ -174,5 +175,15 @@
   }
   .current-swell__spot-conditions {
     margin-bottom: 1rem;
+  }
+
+  .dzu-previewImage {
+    -moz-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    -webkit-transform: scale(2.5);
+    transform: scale(2.5);
+    position: relative;
+    left: 7.5rem;
   }
 }

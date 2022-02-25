@@ -2,8 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Libre Baskerville", serif;
-  font-family: "Rubik", sans-serif;
+  font-family: "Poppins", sans-serif !important;
+
   background-color: rgba(245, 241, 241, 0.612);
 }
 
@@ -20,7 +20,7 @@ a {
   display: flex;
   justify-content: center;
   margin: auto;
-  padding: 3rem;
+  padding: 5rem !important;
 }
 .brand__header {
   color: #0070f3;
@@ -79,10 +79,6 @@ a {
   cursor: pointer;
   font-weight: 600;
   font-size: 1.2rem;
-}
-
-.login-message {
-  margin-top: 4rem;
 }
 
 .spot__result-link:hover {

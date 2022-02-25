@@ -10,4 +10,6 @@ router
   .delete(swellController.deleteSessionsFromLocation);
 
 router.route("/delete").post(swellController.deleteSessionsFromLocation);
+router.route("/delete/sesh/:id").get(swellController.deleteSession);
+
 module.exports = router;

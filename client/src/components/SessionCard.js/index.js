@@ -5,14 +5,37 @@ import SpotConditions from "../SpotConditions";
 import BuoySwells from "../BuoySwells";
 import ConvertTimeWithDate from "../ConvertTimeWithDate";
 import TimeDifference from "../TimeDifference";
-import { FcUpLeft } from "react-icons/fc";
+import API from "../../utils /API";
+import { useHistory } from "react-router-dom";
 import "../CurrentSwellCont/currentSwell.css";
 import "./sessionCard.css";
+import "../SessionGallery.js/sessionGallery.css";
 
 function SessionCard({ spot }) {
+  const history = useHistory();
+  const deleteSession = async (e) => {
+    const id = e.target.getAttribute("data-id");
+    try {
+      const { data } = await API.deleteSession(id);
+
+      history.push(`session/${spot.spotId}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <Container className="session__card-cont rounded shadow-sm">
+        <div className="session__delete-cont">
+          <Button
+            data-id={spot.id}
+            onClick={(e) => deleteSession(e)}
+            variant="danger"
+            className="session__delete-btn"
+          >
+            X
+          </Button>
+        </div>
         <Row>
           <div className="d-flex justify-content-center current-swell__report-header-cont">
             <h5 className="current-swell__report-header text-center">
@@ -78,7 +101,6 @@ function SessionCard({ spot }) {
                     timestamp={spot.timeStamp}
                     nextTimestamp={spot.tide.nextTime}
                   />
-                  hrs
                 </div>
               </Row>
             </div>
